@@ -27,7 +27,7 @@ description = """
 """
 
 view_type = gr.Radio(
-    ["Mapa de citações por local"
+    ["Mapa de citações por local",
      "Mapa de locais citados no conjunto da obra com verbetes",
      "Mapa de calor com a frequência de locais citados no conjunto da obra",
      "Mapa de citações por obra",
