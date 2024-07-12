@@ -7,7 +7,7 @@ def display_map(view_type):
         url = "https://glistening-creponne-55fbb0.netlify.app"
     elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
         url = "https://sprightly-heliotrope-a6037e.netlify.app"
-    elif view_type == "Mapa de citações por obra":
+    elif view_type == "Mapa de citações a locais por obra":
         url = "https://lively-lolly-e332aa.netlify.app"
     elif view_type == "Mapa de calor de citações por obra":
         url = "https://frolicking-blancmange-bdfba9.netlify.app/"
@@ -30,7 +30,7 @@ view_type = gr.Radio(
     ["Mapa de citações por local",
      "Mapa de locais citados no conjunto da obra com verbetes",
      "Mapa de calor com a frequência de locais citados no conjunto da obra",
-     "Mapa de citações por obra",
+     "Mapa de citações a locais por obra",
      "Mapa de calor de citações por obra"],
     label="Selecione a visão do mapa"
 )
