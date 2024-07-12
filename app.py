@@ -5,8 +5,6 @@ def display_map(view_type):
         url = "https://glistening-creponne-55fbb0.netlify.app"
     elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
         url = "https://sprightly-heliotrope-a6037e.netlify.app"
-    elif view_type == "Visão de local e citação sobre Copacabana com Google StreetView":
-        url = "https://lustrous-panda-abc4e2.netlify.app"
     elif view_type == "Mapa de citações por obra":
         url = "https://lively-lolly-e332aa.netlify.app"
     elif view_type == "Mapa de calor de citações por obra":
