@@ -17,7 +17,7 @@ def display_map(view_type):
     iframe = f'<iframe src="{url}" width="100%" height="600" frameborder="0"></iframe>'
     return iframe
 
-view_type = gr.inputs.Radio(["Map 1", "Map 2", "Map 3", "Map 4", "Map 5"], label="Selecione a visão do mapa")
+view_type = gr.Radio(["Map 1", "Map 2", "Map 3", "Map 4", "Map 5"], label="Selecione a visão do mapa")
 
 iface = gr.Interface(fn=display_map, inputs=view_type, outputs="html", live=True)
 iface.launch()
