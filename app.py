@@ -27,7 +27,6 @@ description = """
 view_type = gr.Radio(
     ["Mapa de locais citados no conjunto da obra",
      "Mapa de calor com a frequência de locais citados no conjunto da obra",
-     "Visão de local e citação sobre Copacabana com Google StreetView",
      "Mapa de citações por obra",
      "Mapa de calor de citações por obra"],
     label="Selecione a visão do mapa"
