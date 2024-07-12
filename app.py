@@ -1,23 +1,36 @@
 import gradio as gr
 
 def display_map(view_type):
-    if view_type == "Map 1":
+    if view_type == "Mapa de locais citados no conjunto da obra":
         url = "https://glistening-creponne-55fbb0.netlify.app"
-    elif view_type == "Map 2":
+    elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
         url = "https://sprightly-heliotrope-a6037e.netlify.app"
-    elif view_type == "Map 3":
+    elif view_type == "Visão de local e citação sobre Copacabana com Google StreetView":
+        url = "https://lustrous-panda-abc4e2.netlify.app"
+    elif view_type == "Mapa de citações por obra":
         url = "https://lively-lolly-e332aa.netlify.app"
-    elif view_type == "Map 4":
+    elif view_type == "Mapa de calor de citações por obra":
         url = "https://frolicking-blancmange-bdfba9.netlify.app/"
-    elif view_type == "Map 5":
-        url = "https://marvelous-bonbon-a1949f.netlify.app"
     else:
         url = ""
     
     iframe = f'<iframe src="{url}" width="100%" height="600" frameborder="0"></iframe>'
     return iframe
 
-view_type = gr.Radio(["Map 1", "Map 2", "Map 3", "Map 4", "Map 5"], label="Selecione a visão do mapa")
+description = """
+Este estudo tem o objetivo de desenvolver uma aplicação web semântica que mapeia localidades geográficas nas obras de Machado de Assis, armazenando-as em uma triplestore. A partir da integração dos dados disponibilizados pela enciclopédia MachadodeAssis.net com as coordenadas geográficas de Geonames.org e GoogleMaps, o projeto visa oferecer uma experiência de leitura através de mapas interativos, que servirão de suporte para as menções aos espaços realizadas pelo escritor ao longo do Século XIX. Para a extração das citações, a aplicação utiliza a biblioteca python BeautifulSoup que realiza consultas, requisições e coleta os dados da enciclopédia estruturando-os de acordo com os parâmetros do schema.org. As citações coletadas serão submetidas aos modelos gpt3.5-instruct e gpt4-turbo com o intuito de obter os nomes atuais das localidades, bem como a devida classificação destes espaços de acordo com a ontologia Geonames.org. Ao final, são realizadas consultas SPARQL ao portal dados.literaturabrasileira.ufsc.br com o objetivo de obter identificadores únicos para cada livro, oferecendo uma integração entre mapas, citações e textos completos, em consonância com os padrões Linked Data.
+"""
 
-iface = gr.Interface(fn=display_map, inputs=view_type, outputs="html", live=True)
+view_type = gr.Radio(["Mapa de locais citados no conjunto da obra",
+                      "Mapa de calor com a frequência de locais citados no conjunto da obra",
+                      "Visão de local e citação sobre Copacabana com Google StreetView",
+                      "Mapa de citações por obra",
+                      "Mapa de calor de citações por obra"], 
+                     label="Selecione a visão do mapa")
+
+iface = gr.Interface(fn=display_map, 
+                     inputs=view_type, 
+                     outputs="html", 
+                     live=True, 
+                     description=description)
 iface.launch()
