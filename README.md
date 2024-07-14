@@ -20,7 +20,7 @@ Ao final, são realizadas consultas SPARQL ao portal dados.literaturabrasileira.
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+   git clone https://github.com/rocdavi/MachadodeAssis.git
 
 2. Instale as dependências:
     ```bash
