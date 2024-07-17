@@ -8,9 +8,9 @@ def display_map(view_type):
     elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
         url = "https://sprightly-heliotrope-a6037e.netlify.app"
     elif view_type == "Mapa de citações a locais por obra":
-        url = "https://lively-lolly-e332aa.netlify.app"
+        url = "https://gregarious-meerkat-7a7b8d.netlify.app/"
     elif view_type == "Mapa de calor de citações por obra":
-        url = "https://frolicking-blancmange-bdfba9.netlify.app/"
+        url = "https://starlit-rabanadas-af1d2b.netlify.app/"
     else:
         url = ""
     
