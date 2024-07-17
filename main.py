@@ -2,15 +2,15 @@ import gradio as gr
 
 def display_map(view_type):
     if view_type == "Mapa de citações por local":
-        url = "https://resplendent-cupcake-bd2b51.netlify.app/"
+        url = "https://cheery-cendol-3a987e.netlify.app/"
     elif view_type == "Mapa de locais citados no conjunto da obra com verbetes":
-        url = "https://glistening-creponne-55fbb0.netlify.app"
+        url = "https://aquamarine-lamington-f1d38d.netlify.app/"
     elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
         url = "https://sprightly-heliotrope-a6037e.netlify.app"
     elif view_type == "Mapa de citações a locais por obra":
-        url = "https://lively-lolly-e332aa.netlify.app"
+        url = "https://gregarious-meerkat-7a7b8d.netlify.app/"
     elif view_type == "Mapa de calor de citações por obra":
-        url = "https://frolicking-blancmange-bdfba9.netlify.app/"
+        url = "https://starlit-rabanadas-af1d2b.netlify.app/"
     else:
         url = ""
     
