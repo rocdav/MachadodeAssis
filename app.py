@@ -36,8 +36,9 @@ h1 {
   color: #5d4037; /* Cor do título (marrom mais escuro) */
 }
 h2 {
-  color: #795548; /* Cor dos subtítulos (marrom médio) */
-  font-family: 'Baskerville', serif; /* Fonte para os subtítulos */
+  color: #5d4037; /* Cor dos subtítulos (marrom mais escuro) */
+  font-family: 'Garamond', serif; /* Fonte para os subtítulos */
+  font-size: 2em; /* Tamanho da fonte dos subtítulos */
 }
 a {
   color: #9e9d24; /* Cor dos links (amarelo dourado) */
@@ -93,7 +94,7 @@ a {
     <section>
       <h2>Uma Estrutura de Dados Inteligente</h2>
       <figure>
-        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="max-width: 100%; height: auto; border: 1px solid #000; display: block; margin-left: auto; margin-right: auto;">
+        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="max-width: 70%; height: auto; border: 1px solid #000; display: block; margin-left: auto; margin-right: auto;">
         <figcaption style="text-align: center;">Nossa estrutura de dados, ilustrada acima, garante a organização e interligação das informações, permitindo uma navegação intuitiva e enriquecedora pelo universo machadiano.</figcaption>
       </figure>
     </section>
@@ -101,7 +102,7 @@ a {
       <h2>Explore, Descubra e Mergulhe na História</h2>
       <p>
         Convidamos você a explorar nossa aplicação web e embarcar em uma jornada única pelas páginas de Machado de Assis. Descubra os cenários que inspiraram suas histórias, mergulhe na atmosfera do Rio de Janeiro do século XIX e vivencie a literatura de uma forma totalmente nova.
-      </p>
+      </p>      
     </section>
   </article>
 </div>
