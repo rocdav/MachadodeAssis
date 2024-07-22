@@ -20,6 +20,15 @@ def display_map(view_type):
     return iframe
 
 description = """
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Projeto de Mapeamento das Obras de Machado de Assis</title>
+</head>
+<body>
 <div class="container">
   <article>
     <header>
@@ -51,10 +60,17 @@ description = """
       <h2>Explore, Descubra e Mergulhe na História</h2>
       <p>
         Convidamos você a explorar nossa aplicação web e embarcar em uma jornada única pelas páginas de Machado de Assis. Descubra os cenários que inspiraram suas histórias, mergulhe na atmosfera do Rio de Janeiro do século XIX e vivencie a literatura de uma forma totalmente nova.
-      </p>      
+      </p>
+      <div class="call-to-action" style="text-align: center;">
+        <a href="[Link para a aplicação web]" class="btn" style="margin: 5px;">Explorar a Aplicação</a>
+        <a href="[Link para fornecer feedback]" class="btn" style="margin: 5px;">Fornecer Feedback</a>
+        <a href="[Link para contribuir com o projeto]" class="btn" style="margin: 5px;">Contribuir com o Projeto</a>
+      </div>
     </section>
   </article>
 </div>
+</body>
+</html>
 """
 
 view_type = gr.Radio(
