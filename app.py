@@ -61,11 +61,6 @@ description = """
       <p>
         Convidamos você a explorar nossa aplicação web e embarcar em uma jornada única pelas páginas de Machado de Assis. Descubra os cenários que inspiraram suas histórias, mergulhe na atmosfera do Rio de Janeiro do século XIX e vivencie a literatura de uma forma totalmente nova.
       </p>
-      <div class="call-to-action" style="text-align: center;">
-        <a href="[Link para a aplicação web]" class="btn" style="margin: 5px;">Explorar a Aplicação</a>
-        <a href="[Link para fornecer feedback]" class="btn" style="margin: 5px;">Fornecer Feedback</a>
-        <a href="[Link para contribuir com o projeto]" class="btn" style="margin: 5px;">Contribuir com o Projeto</a>
-      </div>
     </section>
   </article>
 </div>
