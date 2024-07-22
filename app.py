@@ -29,7 +29,7 @@ description = """
     <p>Para a extração das citações, a aplicação utiliza a biblioteca python BeautifulSoup que realiza consultas, requisições e coleta os dados da enciclopédia estruturando-os de acordo com os parâmetros do schema.org. As citações coletadas serão submetidas aos modelos gpt3.5-instruct e gpt4-turbo com o intuito de obter os nomes atuais das localidades, bem como a devida classificação destes espaços de acordo com a ontologia Geonames.org.</p>
     <p>Ao final, são realizadas consultas SPARQL ao portal dados.literaturabrasileira.ufsc.br com o objetivo de obter identificadores únicos para cada livro, oferecendo uma integração entre mapas, citações e textos completos, em consonância com os padrões Linked Data.</p>
     <p>A imagem abaixo ilustra a estrutura de dados utilizada no projeto:</p>
-    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/blob/main/grafooo.png" alt="Estrutura de Dados" style="width:100%; height:auto;">
+    <img src="/main/grafooo.png" alt="Estrutura de Dados" style="width:100%; height:auto;">
 </div>
 """
 
@@ -47,7 +47,7 @@ with gr.Blocks() as demo:
     with gr.Column():
         view_type.render()
         map_display = gr.HTML()
+        gr.Button("Ver endpoint SPARQL").click(fn=display_sparql, outputs=map_display)
     view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
-    gr.Button("Ver endpoint SPARQL").click(fn=display_sparql, outputs=map_display)
 
 demo.launch()
