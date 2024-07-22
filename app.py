@@ -12,7 +12,7 @@ def display_map(view_type):
     elif view_type == "Mapa de calor de citações por obra":
         url = "https://starlit-rabanadas-af1d2b.netlify.app/"
         elif view_type == "Endponti SPARQL":
-        url = "https://huggingface.co/spaces/histlearn/JenaFuseki"
+        url = "https://histlearn-jenafuseki.hf.space/#/dataset/Gazetteer/query"
     else:
         url = ""
     
