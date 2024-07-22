@@ -11,6 +11,8 @@ def display_map(view_type):
         url = "https://gregarious-meerkat-7a7b8d.netlify.app/"
     elif view_type == "Mapa de calor de citações por obra":
         url = "https://starlit-rabanadas-af1d2b.netlify.app/"
+        elif view_type == "Endponti SPARQL":
+        url = "https://huggingface.co/spaces/histlearn/JenaFuseki"
     else:
         url = ""
     
@@ -25,7 +27,7 @@ description = """
     <p>Ao final, são realizadas consultas SPARQL ao portal dados.literaturabrasileira.ufsc.br com o objetivo de obter identificadores únicos para cada livro, oferecendo uma integração entre mapas, citações e textos completos, em consonância com os padrões Linked Data.</p>
     <p>A imagem abaixo ilustra a estrutura de dados utilizada no projeto:</p>
     <div style="text-align: center;">
-        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="width:50%; height:auto;">
+        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="width:50%; height:auto; border: 1px solid #000;">
     </div>
 </div>
 """
@@ -35,20 +37,16 @@ view_type = gr.Radio(
      "Mapa de locais citados no conjunto da obra com verbetes",
      "Mapa de calor com a frequência de locais citados no conjunto da obra",
      "Mapa de citações a locais por obra",
-     "Mapa de calor de citações por obra"],
+     "Mapa de calor de citações por obra",
+     "Ver endpoint SPARQL"],
     label="Selecione a visão do mapa"
 )
 
-def show_sparql_endpoint():
-    return gr.HTML('<a href="https://huggingface.co/spaces/histlearn/JenaFuseki" target="_blank">Ver endpoint SPARQL</a>')
-
 with gr.Blocks() as demo:
     gr.Markdown(description)
-    with gr.Row():
+    with gr.Column():
         view_type.render()
-        sparql_button = gr.Button("Ver endpoint SPARQL")
         map_display = gr.HTML()
-    view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
-    sparql_button.click(fn=show_sparql_endpoint, inputs=None, outputs=map_display)
+    view_type.change(fn=display_content, inputs=view_type, outputs=map_display)
 
 demo.launch()
