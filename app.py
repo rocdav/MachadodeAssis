@@ -22,38 +22,40 @@ def display_map(view_type):
 description = """
 <style>
 body {
-  font-family: 'Merriweather', serif; /* Fonte para o corpo do texto */
+  font-family: 'Georgia', serif; /* Fonte para o corpo do texto */
   line-height: 1.6; /* Espaçamento entre linhas */
   background-color: #f2e9e1; /* Cor de fundo (bege claro) */
   color: #333; /* Cor do texto (marrom escuro) */
+  margin: 0;
+  padding: 0;
 }
-
 h1 {
-  font-family: 'Didot', serif; /* Fonte para o título principal */
-  font-size: 3em; /* Tamanho da fonte do título */
+  font-family: 'Garamond', serif; /* Fonte para o título principal */
+  font-size: 2.5em; /* Tamanho da fonte do título */
   text-align: center; /* Centralizar o título */
   color: #5d4037; /* Cor do título (marrom mais escuro) */
 }
-
 h2 {
   color: #795548; /* Cor dos subtítulos (marrom médio) */
+  font-family: 'Baskerville', serif; /* Fonte para os subtítulos */
 }
-
 a {
   color: #9e9d24; /* Cor dos links (amarelo dourado) */
   text-decoration: none; /* Remover sublinhado dos links */
 }
-
 .container {
-  max-width: 800px; /* Largura máxima do contêiner */
-  margin: 0 auto; /* Centralizar o contêiner */
+  max-width: 1000px; /* Largura máxima do contêiner */
+  margin: 20px auto; /* Centralizar o contêiner e adicionar margem */
   padding: 20px; /* Espaçamento interno do contêiner */
+  background-color: #fff; /* Cor de fundo do contêiner */
+  border: 1px solid #ccc; /* Borda do contêiner */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para o contêiner */
 }
-
 .lead {
   font-style: italic; /* Itálico para a citação inicial */
+  text-align: center; /* Centralizar a citação inicial */
 }
-
 .btn {
   display: inline-block; /* Tornar os botões inline-block para centralizar */
   padding: 10px 20px; /* Espaçamento interno dos botões */
@@ -64,12 +66,10 @@ a {
   cursor: pointer; /* Indicar que é um botão clicável */
   transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
 }
-
 .btn:hover {
   background-color: #a1887f; /* Cor de fundo ao passar o mouse (marrom mais escuro) */
 }
 </style>
-
 <div class="container">
   <article>
     <header>
@@ -93,7 +93,7 @@ a {
     <section>
       <h2>Uma Estrutura de Dados Inteligente</h2>
       <figure>
-        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="max-width: 50%; height: auto; border: 1px solid #000; display: block; margin-left: auto; margin-right: auto;">
+        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="max-width: 100%; height: auto; border: 1px solid #000; display: block; margin-left: auto; margin-right: auto;">
         <figcaption style="text-align: center;">Nossa estrutura de dados, ilustrada acima, garante a organização e interligação das informações, permitindo uma navegação intuitiva e enriquecedora pelo universo machadiano.</figcaption>
       </figure>
     </section>
@@ -101,7 +101,7 @@ a {
       <h2>Explore, Descubra e Mergulhe na História</h2>
       <p>
         Convidamos você a explorar nossa aplicação web e embarcar em uma jornada única pelas páginas de Machado de Assis. Descubra os cenários que inspiraram suas histórias, mergulhe na atmosfera do Rio de Janeiro do século XIX e vivencie a literatura de uma forma totalmente nova.
-      </p>      
+      </p>
     </section>
   </article>
 </div>
