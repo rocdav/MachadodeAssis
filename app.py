@@ -20,15 +20,56 @@ def display_map(view_type):
     return iframe
 
 description = """
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Projeto de Mapeamento das Obras de Machado de Assis</title>
-</head>
-<body>
+<style>
+body {
+  font-family: 'Merriweather', serif; /* Fonte para o corpo do texto */
+  line-height: 1.6; /* Espaçamento entre linhas */
+  background-color: #f2e9e1; /* Cor de fundo (bege claro) */
+  color: #333; /* Cor do texto (marrom escuro) */
+}
+
+h1 {
+  font-family: 'Didot', serif; /* Fonte para o título principal */
+  font-size: 3em; /* Tamanho da fonte do título */
+  text-align: center; /* Centralizar o título */
+  color: #5d4037; /* Cor do título (marrom mais escuro) */
+}
+
+h2 {
+  color: #795548; /* Cor dos subtítulos (marrom médio) */
+}
+
+a {
+  color: #9e9d24; /* Cor dos links (amarelo dourado) */
+  text-decoration: none; /* Remover sublinhado dos links */
+}
+
+.container {
+  max-width: 800px; /* Largura máxima do contêiner */
+  margin: 0 auto; /* Centralizar o contêiner */
+  padding: 20px; /* Espaçamento interno do contêiner */
+}
+
+.lead {
+  font-style: italic; /* Itálico para a citação inicial */
+}
+
+.btn {
+  display: inline-block; /* Tornar os botões inline-block para centralizar */
+  padding: 10px 20px; /* Espaçamento interno dos botões */
+  background-color: #d7ccc8; /* Cor de fundo dos botões (marrom claro) */
+  color: #fff; /* Cor do texto dos botões (branco) */
+  border: none; /* Remover borda dos botões */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Indicar que é um botão clicável */
+  transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+}
+
+.btn:hover {
+  background-color: #a1887f; /* Cor de fundo ao passar o mouse (marrom mais escuro) */
+}
+</style>
+
 <div class="container">
   <article>
     <header>
@@ -60,12 +101,10 @@ description = """
       <h2>Explore, Descubra e Mergulhe na História</h2>
       <p>
         Convidamos você a explorar nossa aplicação web e embarcar em uma jornada única pelas páginas de Machado de Assis. Descubra os cenários que inspiraram suas histórias, mergulhe na atmosfera do Rio de Janeiro do século XIX e vivencie a literatura de uma forma totalmente nova.
-      </p>
+      </p>      
     </section>
   </article>
 </div>
-</body>
-</html>
 """
 
 view_type = gr.Radio(
