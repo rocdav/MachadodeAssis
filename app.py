@@ -116,7 +116,8 @@ view_type = gr.Radio(
      "Mapa de calor com a frequência de locais citados no conjunto da obra",
      "Mapa de citações a locais por obra",
      "Mapa de calor de citações por obra",
-     "Ver endpoint SPARQL"],
+     "Ver endpoint SPARQL",
+    "Ver Grafos por local"],
     label="Selecione a visão do mapa"
 )
 
