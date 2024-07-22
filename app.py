@@ -20,16 +20,51 @@ def display_map(view_type):
     return iframe
 
 description = """
-<div style="text-align: justify; margin-bottom: 20px;">
-    <h1>Projeto de Mapeamento das Obras de Machado de Assis</h1>
-    <p>Este estudo tem o objetivo de desenvolver uma aplicação web semântica que mapeia localidades geográficas nas obras de Machado de Assis, armazenando-as em uma triplestore. A partir da integração dos dados disponibilizados pela enciclopédia <a href="https://machadodeassis.net/" target="_blank">MachadodeAssis.net</a> com as coordenadas geográficas de Geonames.org e GoogleMaps, o projeto visa oferecer uma experiência de leitura através de mapas interativos, que servirão de suporte para as menções aos espaços realizadas pelo escritor ao longo do Século XIX.</p>
-    <p>Para a extração das citações, a aplicação utiliza a biblioteca python BeautifulSoup que realiza consultas, requisições e coleta os dados da enciclopédia estruturando-os de acordo com os parâmetros do schema.org. As citações coletadas serão submetidas aos modelos gpt3.5-instruct e gpt4-turbo com o intuito de obter os nomes atuais das localidades, bem como a devida classificação destes espaços de acordo com a ontologia Geonames.org.</p>
-    <p>Ao final, são realizadas consultas SPARQL ao portal <a href="http://dados.literaturabrasileira.ufsc.br" target="_blank">dados.literaturabrasileira.ufsc.br</a> com o objetivo de obter identificadores únicos para cada livro, oferecendo uma integração entre mapas, citações e textos completos, em consonância com os padrões Linked Data.</p>
-    <p>A imagem abaixo ilustra a estrutura de dados utilizada no projeto:</p>
-    <div style="display: flex; justify-content: center; align-items: center;"> 
-    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="width:50%; height:auto; border: 1px solid #000;">
-    </div>
+<div class="container">
+  <article>
+    <header>
+      <h1>Mapeando o Universo de Machado de Assis: Uma Jornada Interativa pelas Localidades de Suas Obras</h1>
+      <p class="lead">
+        "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
+      </p>
+    </header>
+
+    <section>
+      <h2>Uma Aplicação Web Semântica Inovadora</h2>
+      <p>
+        Desenvolvemos uma aplicação web semântica que mapeia as localidades geográficas mencionadas nas obras de Machado de Assis, utilizando dados da enciclopédia <a href="https://machadodeassis.net/" target="_blank">Machadodeassis.net</a>, coordenadas geográficas de Geonames.org e Google Maps. Imagine explorar um mapa interativo que te transporta para o Rio de Janeiro do século XIX, revelando os locais onde Dom Casmurro, Bentinho e Capitu viveram suas paixões e dramas.
+      </p>
+    </section>
+
+    <section>
+      <h2>Tecnologia de Ponta a Serviço da Literatura</h2>
+      <p>
+        Nossa aplicação utiliza a biblioteca Python BeautifulSoup para extrair citações das obras de Machado de Assis, e os modelos GPT-3.5 e GPT-4 para identificar e classificar as localidades mencionadas. Através de consultas SPARQL ao portal <a href="http://dados.literaturabrasileira.ufsc.br" target="_blank">dados.literaturabrasileira.ufsc.br</a>, integramos mapas, citações e textos completos, seguindo os padrões Linked Data.
+      </p>
+    </section>
+
+    <section>
+      <h2>Uma Estrutura de Dados Inteligente</h2>
+      <figure>
+        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="max-width: 100%; height: auto; border: 1px solid #000;">
+        <figcaption>Nossa estrutura de dados, ilustrada acima, garante a organização e interligação das informações, permitindo uma navegação intuitiva e enriquecedora pelo universo machadiano.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Explore, Descubra e Mergulhe na História</h2>
+      <p>
+        Convidamos você a explorar nossa aplicação web e embarcar em uma jornada única pelas páginas de Machado de Assis. Descubra os cenários que inspiraram suas histórias, mergulhe na atmosfera do Rio de Janeiro do século XIX e vivencie a literatura de uma forma totalmente nova.
+      </p>
+      <div class="call-to-action">
+        <a href="[Link para a aplicação web]" class="btn">Explorar a Aplicação</a>
+        <a href="[Link para fornecer feedback]" class="btn">Fornecer Feedback</a>
+        <a href="[Link para contribuir com o projeto]" class="btn">Contribuir com o Projeto</a>
+      </div>
+    </section>
+  </article>
 </div>
+
 """
 
 view_type = gr.Radio(
