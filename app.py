@@ -13,6 +13,8 @@ def display_map(view_type):
         url = "https://starlit-rabanadas-af1d2b.netlify.app/"
     elif view_type == "Ver endpoint SPARQL":
         url = "https://histlearn-jenafuseki.hf.space/#/dataset/Gazetteer/query"
+    elif view_type == "Ver Grafos por local":
+        url = "https://histlearn-showgraph.hf.space"    
     else:
         url = ""
     
