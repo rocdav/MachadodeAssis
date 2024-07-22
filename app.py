@@ -11,7 +11,7 @@ def display_map(view_type):
         url = "https://gregarious-meerkat-7a7b8d.netlify.app/"
     elif view_type == "Mapa de calor de citações por obra":
         url = "https://starlit-rabanadas-af1d2b.netlify.app/"
-        elif view_type == "Endponti SPARQL":
+    elif view_type == "Ver endpoint SPARQL":
         url = "https://histlearn-jenafuseki.hf.space/#/dataset/Gazetteer/query"
     else:
         url = ""
@@ -47,6 +47,6 @@ with gr.Blocks() as demo:
     with gr.Column():
         view_type.render()
         map_display = gr.HTML()
-    view_type.change(fn=display_content, inputs=view_type, outputs=map_display)
+    view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
 demo.launch()
