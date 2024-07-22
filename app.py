@@ -31,7 +31,7 @@ description = """
     <section>
       <h2>Uma Aplicação Web Semântica</h2>
       <p>
-        Desenvolvemos uma aplicação web semântica que mapeia as localidades geográficas mencionadas nas obras de Machado de Assis, utilizando dados da enciclopédia <a href="https://machadodeassis.net/" target="_blank">Machadodeassis.net</a>, coordenadas geográficas de Geonames.org e Google Maps. Os excertos da obra aparecem localizados em um mapa interativo, o que permite uma melhor compreensão do espaço e do contexto na obra. Ao visualizar as passagens literárias mapeadas geograficamente, é possível obter uma percepção mais profunda de como os locais influenciam e enriquecem as narrativas de Machado de Assis. Isso oferece aos leitores uma maneira de explorar os cenários descritos, revelando a conexão entre as tramas e os espaços geográficos que inspiraram o autor
+        Desenvolvemos uma aplicação web semântica que mapeia as localidades geográficas mencionadas nas obras de Machado de Assis, utilizando dados da enciclopédia <a href="https://machadodeassis.net/" target="_blank">Machadodeassis.net</a>, coordenadas geográficas de Geonames.org e Google Maps. Os excertos da obra aparecem localizados em um mapa interativo, o que permite uma melhor compreensão do espaço e do contexto na obra. Ao visualizar as passagens literárias mapeadas geograficamente, é possível obter uma percepção mais profunda de como os locais influenciam e enriquecem as narrativas de Machado de Assis. Isso oferece aos leitores uma maneira de explorar os cenários descritos, revelando a conexão entre as tramas e os espaços geográficos que inspiraram o autor.
       </p>
     </section>
     <section>
@@ -51,12 +51,7 @@ description = """
       <h2>Explore, Descubra e Mergulhe na História</h2>
       <p>
         Convidamos você a explorar nossa aplicação web e embarcar em uma jornada única pelas páginas de Machado de Assis. Descubra os cenários que inspiraram suas histórias, mergulhe na atmosfera do Rio de Janeiro do século XIX e vivencie a literatura de uma forma totalmente nova.
-      </p>
-      <div class="call-to-action" style="text-align: center;">
-        <a href="[Link para a aplicação web]" class="btn" style="margin: 5px;">Explorar a Aplicação</a>
-        <a href="[Link para fornecer feedback]" class="btn" style="margin: 5px;">Fornecer Feedback</a>
-        <a href="[Link para contribuir com o projeto]" class="btn" style="margin: 5px;">Contribuir com o Projeto</a>
-      </div>
+      </p>      
     </section>
   </article>
 </div>
