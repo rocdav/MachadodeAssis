@@ -26,8 +26,8 @@ description = """
     <p>Para a extração das citações, a aplicação utiliza a biblioteca python BeautifulSoup que realiza consultas, requisições e coleta os dados da enciclopédia estruturando-os de acordo com os parâmetros do schema.org. As citações coletadas serão submetidas aos modelos gpt3.5-instruct e gpt4-turbo com o intuito de obter os nomes atuais das localidades, bem como a devida classificação destes espaços de acordo com a ontologia Geonames.org.</p>
     <p>Ao final, são realizadas consultas SPARQL ao portal <a href="http://dados.literaturabrasileira.ufsc.br" target="_blank">dados.literaturabrasileira.ufsc.br</a> com o objetivo de obter identificadores únicos para cada livro, oferecendo uma integração entre mapas, citações e textos completos, em consonância com os padrões Linked Data.</p>
     <p>A imagem abaixo ilustra a estrutura de dados utilizada no projeto:</p>
-    <div style="text-align: center;">
-        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="width:50%; height:auto; border: 1px solid #000;">
+    <div style="display: flex; justify-content: center; align-items: center;"> 
+    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="width:50%; height:auto; border: 1px solid #000;">
     </div>
 </div>
 """
