@@ -29,9 +29,9 @@ description = """
       </p>
     </header>
     <section>
-      <h2>Uma Aplicação Web Semântica Inovadora</h2>
+      <h2>Uma Aplicação Web Semântica</h2>
       <p>
-        Desenvolvemos uma aplicação web semântica que mapeia as localidades geográficas mencionadas nas obras de Machado de Assis, utilizando dados da enciclopédia <a href="https://machadodeassis.net/" target="_blank">Machadodeassis.net</a>, coordenadas geográficas de Geonames.org e Google Maps. Imagine explorar um mapa interativo que te transporta para o Rio de Janeiro do século XIX, revelando os locais onde Dom Casmurro, Bentinho e Capitu viveram suas paixões e dramas.
+        Desenvolvemos uma aplicação web semântica que mapeia as localidades geográficas mencionadas nas obras de Machado de Assis, utilizando dados da enciclopédia <a href="https://machadodeassis.net/" target="_blank">Machadodeassis.net</a>, coordenadas geográficas de Geonames.org e Google Maps. Os excertos da obra aparecem localizados em um mapa interativo, o que permite uma melhor compreensão do espaço e do contexto na obra. Ao visualizar as passagens literárias mapeadas geograficamente, é possível obter uma percepção mais profunda de como os locais influenciam e enriquecem as narrativas de Machado de Assis. Isso oferece aos leitores uma maneira de explorar os cenários descritos, revelando a conexão entre as tramas e os espaços geográficos que inspiraram o autor
       </p>
     </section>
     <section>
