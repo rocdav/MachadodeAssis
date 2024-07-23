@@ -33,21 +33,24 @@ body {
 }
 .header-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 20px;
 }
 .header-content {
-  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 .scielo-link {
-  margin-right: 20px;
   text-align: center;
+  margin-right: 20px;
 }
 .scielo-link img {
   width: 100px;
   margin: 10px;
-  display: block;
 }
 h1 {
   font-family: 'Garamond', serif;
@@ -57,51 +60,53 @@ h1 {
   margin-top: 20px;
 }
 h2 {
-  color: #5d4037;
-  font-family: 'Garamond', serif;
-  font-size: 2em;
+  color: #5d4037; /* Cor dos subtítulos (marrom mais escuro) */
+  font-family: 'Garamond', serif; /* Fonte para os subtítulos */
+  font-size: 2em; /* Tamanho da fonte dos subtítulos */
 }
 a {
-  color: #9e9d24;
-  text-decoration: none;
+  color: #9e9d24; /* Cor dos links (amarelo dourado) */
+  text-decoration: none; /* Remover sublinhado dos links */
 }
 .container {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+  max-width: 1000px; /* Largura máxima do contêiner */
+  margin: 20px auto; /* Centralizar o contêiner e adicionar margem */
+  padding: 20px; /* Espaçamento interno do contêiner */
+  background-color: #fff; /* Cor de fundo do contêiner */
+  border: 1px solid #ccc; /* Borda do contêiner */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para o contêiner */
+  position: relative; /* Adicionado para alinhar a imagem dentro do container */
 }
 .lead {
   font-style: italic;
-  text-align: center;
-  font-size: 1.2em;
+  text-align: center; /* Centralizar a citação inicial */
+  font-size: 1.2em; /* Aumentar o tamanho do texto */
 }
 .author {
-  text-align: left;
+  text-align: left; /* Alinhar os autores à esquerda */
   font-size: 1.2em;
   color: #5d4037;
   font-family: 'Garamond', serif;
-  margin-top: 10px;
+  margin-top: 10px; /* Espaçamento acima do texto dos autores */
 }
 </style>
 <div class="container">
   <div class="header-container">
-    <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
-      <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
-      <p>Leia o manuscrito</p>
-    </a>
+    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/header.png" alt="Header Image" style="width: 100%; max-width: 1000px; height: auto;">
     <div class="header-content">
-      <h1>Dicionário Geográfico e Literário de Machado de Assis</h1>
-      <p class="lead">
-        "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
-      </p>
-      <p class="author">por Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
+      <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
+        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
+        <p>Leia o manuscrito</p>
+      </a>
+      <div>
+        <h1>Dicionário Geográfico e Literário de Machado de Assis</h1>
+        <p class="lead">
+          "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
+        </p>
+        <p class="author">por Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
+      </div>
     </div>
-    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/header.png" alt="Header Image" style="height: auto; max-width: 400px;">
   </div>
   <article>
     <section>
