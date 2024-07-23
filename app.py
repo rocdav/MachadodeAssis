@@ -76,6 +76,7 @@ a {
 .scielo-link img {
   width: 100px;
   margin: 10px;
+  align: center;
 }
 </style>
 <div class="container">
