@@ -110,16 +110,29 @@ a {
 </div>
 """
 
-view_type = gr.Radio(
-    ["Mapa de citações por local",
-     "Mapa de locais citados no conjunto da obra com verbetes",
-     "Mapa de calor com a frequência de locais citados no conjunto da obra",
-     "Mapa de citações a locais por obra",
-     "Mapa de calor de citações por obra",
-     "Ver endpoint SPARQL",
-    "Ver Grafos por local"],
-    label="Selecione a visão do mapa"
-)
+    with gr.Column(elem_classes="container"):
+        gr.Markdown("""
+        ## Como usar
+        1. Selecione o tipo de visualização desejada no menu abaixo.
+        2. O mapa correspondente será carregado automaticamente.
+        3. Explore os diferentes aspectos das obras de Machado de Assis através dos mapas interativos.
+        """)
+        
+        with gr.Column(elem_classes="controls"):
+            view_type = gr.Radio(
+                ["Mapa de citações por local",
+                 "Mapa de locais citados no conjunto da obra com verbetes",
+                 "Mapa de calor com a frequência de locais citados no conjunto da obra",
+                 "Mapa de citações a locais por obra",
+                 "Mapa de calor de citações por obra",
+                 "Ver endpoint SPARQL",
+                 "Ver Grafos por local"],
+                label="Selecione a visão do mapa"
+            )
+        
+        with gr.Column(elem_classes="map-container"):
+            map_display = gr.HTML()
+            loading = gr.HTML('<div class="loading">Carregando mapa, por favor aguarde...</div>')
 
 with gr.Blocks() as demo:
     gr.HTML(description)
