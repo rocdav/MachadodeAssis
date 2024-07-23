@@ -91,73 +91,25 @@ a {
   margin-top: 10px; /* Espaçamento acima do texto dos autores */
 }
 @media (max-width: 600px) {
-    body {
-      font-family: 'Georgia', serif;
-      line-height: 1.6;
-      background-color: #f2e9e1;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    .header-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 15px;
-    }
-    .header-content {
-      display: flex;
-      flex-direction: column; /* Alterado para empilhar em telas menores */
-      align-items: center;
-      width: 100%;
-    }
-    .scielo-link {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    .scielo-link img {
-      width: 80px;
-      margin: 5px;
-    }
-    h1 {
-      font-family: 'Garamond', serif;
-      font-size: 1.8em; /* Reduzido para telas menores */
-      text-align: center;
-      color: #5d4037;
-      margin-top: 20px;
-    }
-    h2 {
-      color: #5d4037;
-      font-family: 'Garamond', serif;
-      font-size: 2em;
-    }
-    a {
-      color: #9e9d24;
-      text-decoration: none;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      position: relative;
-    }
-    .lead {
-      font-style: italic;
-      text-align: center;
-      font-size: 1em;
-    }
-    .author {
-      text-align: center; /* Centralizado para telas menores */
-      font-size: 1.2em;
-      color: #5d4037;
-      font-family: 'Garamond', serif;
-      margin-top: 10px;
-    }
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .scielo-link {
+    order: -1; /* Move o link para cima */
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .scielo-link img {
+    width: 80px; /* Ajusta o tamanho da imagem para telas menores */
+    margin: 5px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+  .lead {
+    font-size: 1em;
+   } 
 </style>
 <div class="container">
   <div class="header-container">
@@ -230,3 +182,5 @@ with gr.Blocks(css=description) as demo:
     view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
 demo.launch()
+
+
