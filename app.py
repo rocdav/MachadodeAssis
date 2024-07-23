@@ -119,7 +119,7 @@ with gr.Blocks(css=description) as demo:
         2. O mapa correspondente será carregado automaticamente.
         3. Explore os diferentes aspectos das obras de Machado de Assis através dos mapas interativos.
         4. É possível fazer consultas SPARQL ao arquivo de dados através do Jena Fuseki.
-        5. Os grafos das consultas aos locais também estão disponíveis
+        5. Os grafos das consultas aos locais também estão disponíveis.
         """)
         
         with gr.Column(elem_classes="controls"):
@@ -133,10 +133,9 @@ with gr.Blocks(css=description) as demo:
                  "Ver Grafos por local"],
                 label="Selecione a visão do mapa"
             )
-        
-        with gr.Column(elem_classes="map-container"):
-            map_display = gr.HTML()
-            loading = gr.HTML('<div class="loading">Carregando mapa, por favor aguarde...</div>')
+    
+    with gr.Column(elem_classes="map-container"):
+        map_display = gr.HTML()
 
     view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
