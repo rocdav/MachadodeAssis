@@ -26,8 +26,8 @@ description = """
 body {
   font-family: 'Georgia', serif;
   line-height: 1.6;
-  background-color: #f2e9e1;
-  color: #333;
+  background-color: #f0e6d2;
+  color: #3e2723;
   margin: 0;
   padding: 0;
 }
@@ -35,7 +35,7 @@ h1 {
   font-family: 'Garamond', serif;
   font-size: 2.5em;
   text-align: center;
-  color: #5d4037;
+  color: #4e342e;
 }
 h2 {
   color: #5d4037;
@@ -43,45 +43,46 @@ h2 {
   font-size: 2em;
 }
 a {
-  color: #9e9d24;
+  color: #795548;
   text-decoration: none;
 }
 .container {
   max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #fff3e0;
+  border: 1px solid #d7ccc8;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(121, 85, 72, 0.1);
 }
 .lead {
   font-style: italic;
   text-align: center;
+  color: #6d4c41;
 }
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #d7ccc8;
-  color: #fff;
+  background-color: #8d6e63;
+  color: #fff3e0;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 .btn:hover {
-  background-color: #a1887f;
+  background-color: #6d4c41;
 }
 .controls {
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #ffecb3;
+  border: 1px solid #d7ccc8;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
 }
 .map-container {
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #fff3e0;
+  border: 1px solid #d7ccc8;
   border-radius: 10px;
   padding: 20px;
   min-height: 600px;
@@ -91,10 +92,11 @@ a {
   text-align: center;
   font-style: italic;
   margin-top: 10px;
+  color: #6d4c41;
 }
 footer {
   background-color: #5d4037;
-  color: #fff;
+  color: #fff3e0;
   text-align: center;
   padding: 10px 0;
   margin-top: 20px;
