@@ -24,108 +24,113 @@ def display_map(view_type):
 description = """
 <style>
 body {
-  font-family: 'Georgia', serif; /* Fonte para o corpo do texto */
-  line-height: 1.6; /* Espaçamento entre linhas */
-  background-color: #f2e9e1; /* Cor de fundo (bege claro) */
-  color: #333; /* Cor do texto (marrom escuro) */
-  margin: 0;
-  padding: 0;
-}
-h1 {
-  font-family: 'Garamond', serif; /* Fonte para o título principal */
-  font-size: 2.5em; /* Tamanho da fonte do título */
-  text-align: center; /* Centralizar o título */
-  color: #5d4037; /* Cor do título (marrom mais escuro) */
-}
-h2 {
-  color: #5d4037; /* Cor dos subtítulos (marrom mais escuro) */
-  font-family: 'Garamond', serif; /* Fonte para os subtítulos */
-  font-size: 2em; /* Tamanho da fonte dos subtítulos */
-}
-a {
-  color: #9e9d24; /* Cor dos links (amarelo dourado) */
-  text-decoration: none; /* Remover sublinhado dos links */
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    background-color: #f2e9e1;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 .container {
-  max-width: 1000px; /* Largura máxima do contêiner */
-  margin: 20px auto; /* Centralizar o contêiner e adicionar margem */
-  padding: 20px; /* Espaçamento interno do contêiner */
-  background-color: #fff; /* Cor de fundo do contêiner */
-  border: 1px solid #ccc; /* Borda do contêiner */
-  border-radius: 10px; /* Bordas arredondadas */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para o contêiner */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
-.lead {
-  font-style: italic; /* Itálico para a citação inicial */
-  text-align: center; /* Centralizar a citação inicial */
+header {
+    background-color: #5d4037;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
 }
-.btn {
-  display: inline-block; /* Tornar os botões inline-block para centralizar */
-  padding: 10px 20px; /* Espaçamento interno dos botões */
-  background-color: #d7ccc8; /* Cor de fundo dos botões (marrom claro) */
-  color: #fff; /* Cor do texto dos botões (branco) */
-  border: none; /* Remover borda dos botões */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Indicar que é um botão clicável */
-  transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+h1 {
+    font-family: 'Garamond', serif;
+    font-size: 2.5em;
+    margin: 0;
 }
-.btn:hover {
-  background-color: #a1887f; /* Cor de fundo ao passar o mouse (marrom mais escuro) */
+h2 {
+    color: #5d4037;
+    font-family: 'Garamond', serif;
+    font-size: 2em;
+}
+.controls {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.map-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 600px;
+}
+footer {
+    background-color: #5d4037;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+.loading {
+    display: none;
+    text-align: center;
+    font-style: italic;
+    margin-top: 10px;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
 }
 </style>
-<div class="container">
-  <article>
-    <header>
-      <h1>Mapeando o Universo de Machado de Assis: Uma Jornada Interativa pelas Localidades de Suas Obras</h1>
-      <p class="lead">
-        "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
-      </p>
-    </header>
-    <section>
-      <h2>Uma Aplicação Web Semântica</h2>
-      <p>
-        Desenvolvemos uma aplicação web semântica que mapeia as localidades geográficas mencionadas nas obras de Machado de Assis, utilizando dados da enciclopédia <a href="https://machadodeassis.net/" target="_blank">Machadodeassis.net</a>, coordenadas geográficas de Geonames.org e Google Maps. Os excertos da obra aparecem localizados em um mapa interativo, o que permite uma melhor compreensão do espaço e do contexto na obra. Ao visualizar as passagens literárias mapeadas geograficamente, é possível obter uma percepção mais profunda de como os locais influenciam e enriquecem as narrativas de Machado de Assis. Isso oferece aos leitores uma maneira de explorar os cenários descritos, revelando a conexão entre as tramas e os espaços geográficos que inspiraram o autor.
-      </p>
-    </section>
-    <section>
-      <h2>Tecnologia de Ponta a Serviço da Literatura</h2>
-      <p>
-        Nossa aplicação utiliza a biblioteca Python BeautifulSoup para extrair citações das obras de Machado de Assis, e os modelos GPT-3.5 e GPT-4 para identificar e classificar as localidades mencionadas. Através de consultas SPARQL ao portal <a href="http://dados.literaturabrasileira.ufsc.br" target="_blank">dados.literaturabrasileira.ufsc.br</a>, integramos mapas, citações e textos completos, seguindo os padrões Linked Data.
-      </p>
-    </section>
-    <section>
-      <h2>Uma Estrutura de Dados Inteligente</h2>
-      <figure>
-        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="max-width: 70%; height: auto; border: 1px solid #000; display: block; margin-left: auto; margin-right: auto;">
-        <figcaption style="text-align: center;">Nossa estrutura de dados, ilustrada acima, garante a organização e interligação das informações, permitindo uma navegação intuitiva e enriquecedora pelo universo machadiano.</figcaption>
-      </figure>
-    </section>
-    <section>
-      <h2>Explore, Descubra e Mergulhe na História</h2>
-      <p>
-        Convidamos você a explorar nossa aplicação web e embarcar em uma jornada única pelas páginas de Machado de Assis. Descubra os cenários que inspiraram suas histórias, mergulhe na atmosfera do Rio de Janeiro do século XIX e vivencie a literatura de uma forma totalmente nova.
-      </p>      
-    </section>
-  </article>
-</div>
 """
 
-view_type = gr.Radio(
-    ["Mapa de citações por local",
-     "Mapa de locais citados no conjunto da obra com verbetes",
-     "Mapa de calor com a frequência de locais citados no conjunto da obra",
-     "Mapa de citações a locais por obra",
-     "Mapa de calor de citações por obra",
-     "Ver endpoint SPARQL",
-    "Ver Grafos por local"],
-    label="Selecione a visão do mapa"
-)
+with gr.Blocks(css=description) as demo:
+    gr.HTML("""
+    <header>
+        <h1>Mapeando o Universo de Machado de Assis</h1>
+        <p>Uma Jornada Interativa pelas Localidades de Suas Obras</p>
+    </header>
+    """)
+    
+    with gr.Column(elem_classes="container"):
+        gr.Markdown("""
+        ## Como usar
+        1. Selecione o tipo de visualização desejada no menu abaixo.
+        2. O mapa correspondente será carregado automaticamente.
+        3. Explore os diferentes aspectos das obras de Machado de Assis através dos mapas interativos.
+        """)
+        
+        with gr.Column(elem_classes="controls"):
+            view_type = gr.Radio(
+                ["Mapa de citações por local",
+                 "Mapa de locais citados no conjunto da obra com verbetes",
+                 "Mapa de calor com a frequência de locais citados no conjunto da obra",
+                 "Mapa de citações a locais por obra",
+                 "Mapa de calor de citações por obra",
+                 "Ver endpoint SPARQL",
+                 "Ver Grafos por local"],
+                label="Selecione a visão do mapa"
+            )
+        
+        with gr.Column(elem_classes="map-container"):
+            map_display = gr.HTML()
+            loading = gr.HTML('<div class="loading">Carregando mapa, por favor aguarde...</div>')
+    
+    def on_view_type_change(view):
+        return gr.update(value='<div class="loading" style="display: block;">Carregando mapa, por favor aguarde...</div>')
 
-with gr.Blocks() as demo:
-    gr.HTML(description)
-    with gr.Column():
-        view_type.render()
-        map_display = gr.HTML()
-    view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
+    view_type.change(
+        fn=on_view_type_change,
+        inputs=view_type,
+        outputs=loading
+    ).then(
+        fn=display_map,
+        inputs=view_type,
+        outputs=map_display
+    )
 
 demo.launch()
