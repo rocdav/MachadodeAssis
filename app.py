@@ -36,6 +36,7 @@ h1 {
   font-size: 2.5em; /* Tamanho da fonte do título */
   text-align: center; /* Centralizar o título */
   color: #5d4037; /* Cor do título (marrom mais escuro) */
+  position: relative;
 }
 h2 {
   color: #5d4037; /* Cor dos subtítulos (marrom mais escuro) */
@@ -59,24 +60,34 @@ a {
   font-style: italic; /* Itálico para a citação inicial */
   text-align: center; /* Centralizar a citação inicial */
 }
-.btn {
-  display: inline-block; /* Tornar os botões inline-block para centralizar */
-  padding: 10px 20px; /* Espaçamento interno dos botões */
-  background-color: #d7ccc8; /* Cor de fundo dos botões (marrom claro) */
-  color: #fff; /* Cor do texto dos botões (branco) */
-  border: none; /* Remover borda dos botões */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Indicar que é um botão clicável */
-  transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+.author {
+  text-align: left;
+  font-size: 1.2em;
+  color: #5d4037;
+  font-family: 'Garamond', serif;
+  margin-top: -10px;
 }
-.btn:hover {
-  background-color: #a1887f; /* Cor de fundo ao passar o mouse (marrom mais escuro) */
+.scielo-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+}
+.scielo-link img {
+  width: 100px; /* Ajuste conforme necessário */
+  margin: 10px;
 }
 </style>
 <div class="container">
   <article>
     <header>
-      <h1>Dicionário Geográfico e Literário de Machado de Assis</h1>
+      <h1>Dicionário Geográfico e Literário de Machado de Assis
+        <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
+          <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
+          <p>Leia o manuscrito</p>
+        </a>
+      </h1>
+      <p class="author">por, Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
       <p class="lead">
         "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
       </p>
