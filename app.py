@@ -76,7 +76,7 @@ a {
 <div class="container">
   <article>
     <header>
-      <h1>Mapeando o Universo de Machado de Assis: Uma Jornada Interativa pelas Localidades de Suas Obras</h1>
+      <h1>Dicionário Geográfico e Literário de Machado de Assis</h1>
       <p class="lead">
         "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
       </p>
