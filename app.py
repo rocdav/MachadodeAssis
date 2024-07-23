@@ -24,19 +24,19 @@ def display_map(view_type):
 description = """
 <style>
 body {
-  font-family: 'Georgia', serif; /* Fonte para o corpo do texto */
-  line-height: 1.6; /* Espaçamento entre linhas */
-  background-color: #f2e9e1; /* Cor de fundo (bege claro) */
-  color: #333; /* Cor do texto (marrom escuro) */
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  background-color: #f2e9e1;
+  color: #333;
   margin: 0;
   padding: 0;
 }
 h1 {
-  font-family: 'Garamond', serif; /* Fonte para o título principal */
-  font-size: 2.5em; /* Tamanho da fonte do título */
-  text-align: center; /* Centralizar o título */
-  color: #5d4037; /* Cor do título (marrom mais escuro) */
-  margin-top: 20px; /* Espaçamento superior para separar da imagem */
+  font-family: 'Garamond', serif;
+  font-size: 2.5em;
+  text-align: center;
+  color: #5d4037;
+  margin-top: 20px;
 }
 h2 {
   color: #5d4037; /* Cor dos subtítulos (marrom mais escuro) */
@@ -70,13 +70,11 @@ a {
   margin-top: 10px; /* Espaçamento acima do texto dos autores */
 }
 .scielo-link {
-  position: absolute;
-  top: 10px; /* Ajuste conforme necessário */
-  right: 10px; /* Ajuste conforme necessário */
   text-align: center;
+  margin-bottom: 20px; /* Adiciona espaço entre o logo e o título */
 }
 .scielo-link img {
-  width: 100px; /* Ajuste conforme necessário */
+  width: 100px;
   margin: 10px;
 }
 </style>
