@@ -2,7 +2,7 @@ import gradio as gr
 
 def display_map(view_type):
     if view_type == "Mapa de citações por local":
-        url = "https://gregarious-smakager-0d5f64.netlify.app/"
+        url = "https://dancing-lebkuchen-90896f.netlify.app/"
     elif view_type == "Mapa de locais citados no conjunto da obra com verbetes":
         url = "https://aquamarine-lamington-f1d38d.netlify.app/"
     elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
