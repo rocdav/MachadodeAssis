@@ -100,12 +100,6 @@ a {
         <figcaption style="text-align: center;">Nossa estrutura de dados, ilustrada acima, garante a organização e interligação das informações, permitindo uma navegação intuitiva e enriquecedora pelo universo machadiano.</figcaption>
       </figure>
     </section>
-    <section>
-      <h2>Explore, Descubra e Mergulhe na História</h2>
-      <p>
-        Convidamos você a explorar nossa aplicação web e embarcar em uma jornada única pelas páginas de Machado de Assis. Descubra os cenários que inspiraram suas histórias, mergulhe na atmosfera do Rio de Janeiro do século XIX e vivencie a literatura de uma forma totalmente nova.
-      </p>      
-    </section>
   </article>
 </div>
 """
