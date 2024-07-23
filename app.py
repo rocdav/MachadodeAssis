@@ -55,6 +55,7 @@ a {
   border: 1px solid #ccc; /* Borda do contêiner */
   border-radius: 10px; /* Bordas arredondadas */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para o contêiner */
+  position: relative; /* Adicionado para alinhar a imagem dentro do container */
 }
 .lead {
   font-style: italic; /* Itálico para a citação inicial */
@@ -84,11 +85,11 @@ a {
       <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
         <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
         <p>Leia o manuscrito</p>
-      </a>
-      <p class="author">por, Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
+      </a>      
       <p class="lead">
         "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
       </p>
+      <p class="author">por Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
     </header>
     <section>
       <h2>Web Semântica</h2>
