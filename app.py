@@ -2,7 +2,7 @@ import gradio as gr
 
 def display_map(view_type):
     if view_type == "Mapa de citações por local":
-        url = "https://extraordinary-biscochitos-68c611.netlify.app/"
+        url = "https://dancing-lebkuchen-90896f.netlify.app/"
     elif view_type == "Mapa de locais citados no conjunto da obra com verbetes":
         url = "https://aquamarine-lamington-f1d38d.netlify.app/"
     elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
@@ -119,7 +119,7 @@ with gr.Blocks(css=description) as demo:
         2. O mapa correspondente será carregado automaticamente.
         3. Explore os diferentes aspectos das obras de Machado de Assis através dos mapas interativos.
         4. É possível fazer consultas SPARQL ao arquivo de dados através do Jena Fuseki.
-        5. Os grafos das consultas aos locais também estão disponíveis.
+        5. Os grafos das consultas aos locais também estão disponíveis
         """)
         
         with gr.Column(elem_classes="controls"):
@@ -133,10 +133,10 @@ with gr.Blocks(css=description) as demo:
                  "Ver Grafos por local"],
                 label="Selecione a visão do mapa"
             )
-    
-    with gr.Column(elem_classes="container"):
+        
         with gr.Column(elem_classes="map-container"):
             map_display = gr.HTML()
+            loading = gr.HTML('<div class="loading">Carregando mapa, por favor aguarde...</div>')
 
     view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
