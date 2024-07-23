@@ -69,24 +69,22 @@ a {
 }
 .scielo-link {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 20px; /* Ajuste conforme necessário */
+  right: 20px; /* Ajuste conforme necessário */
   text-align: center;
 }
 .scielo-link img {
   width: 100px; /* Ajuste conforme necessário */
-  margin: 10px;
 }
 </style>
 <div class="container">
   <article>
     <header>
-      <h1>Dicionário Geográfico e Literário de Machado de Assis
-        <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
-          <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
-          <p>Leia o manuscrito</p>
-        </a>
-      </h1>
+      <h1>Dicionário Geográfico e Literário de Machado de Assis</h1>
+      <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
+        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
+        <p>Leia o manuscrito</p>
+      </a>
       <p class="author">por, Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
       <p class="lead">
         "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
