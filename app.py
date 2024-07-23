@@ -75,8 +75,8 @@ a {
 }
 .scielo-link img {
   width: 100px;
-  margin: 10px;
-  align: center;
+  margin: 10px auto;
+  display: block; /* Definir a imagem como um bloco */
 }
 </style>
 <div class="container">
