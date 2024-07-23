@@ -134,8 +134,9 @@ with gr.Blocks(css=description) as demo:
                 label="Selecione a visão do mapa"
             )
     
-    with gr.Column(elem_classes="map-container"):
-        map_display = gr.HTML()
+    with gr.Column(elem_classes="container"):
+        with gr.Column(elem_classes="map-container"):
+            map_display = gr.HTML()
 
     view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
