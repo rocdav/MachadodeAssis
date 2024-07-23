@@ -84,7 +84,7 @@ a {
   font-size: 1.2em; /* Aumentar o tamanho do texto */
 }
 .author {
-  text-align: left; /* Alinhar os autores à esquerda */
+  text-align: right; /* Alinhar os autores à esquerda */
   font-size: 1.2em;
   color: #5d4037;
   font-family: 'Garamond', serif;
