@@ -198,7 +198,7 @@ a {
       <div>
         <h1>Dicionário Geográfico e Literário de Machado de Assis</h1>
         <p class="lead">
-          "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
+          Dom Casmurro morava no Engenho Novo? Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
         </p>
         <p class="author">por Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
       </div>
