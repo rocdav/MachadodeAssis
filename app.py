@@ -36,7 +36,7 @@ h1 {
   font-size: 2.5em; /* Tamanho da fonte do título */
   text-align: center; /* Centralizar o título */
   color: #5d4037; /* Cor do título (marrom mais escuro) */
-  position: relative;
+  margin-top: 20px; /* Espaçamento superior para separar da imagem */
 }
 h2 {
   color: #5d4037; /* Cor dos subtítulos (marrom mais escuro) */
@@ -63,7 +63,7 @@ a {
   font-size: 1.2em; /* Aumentar o tamanho do texto */
 }
 .author {
-  text-align: center; /* Alinhar os autores ao centro */
+  text-align: left; /* Alinhar os autores à esquerda */
   font-size: 1.2em;
   color: #5d4037;
   font-family: 'Garamond', serif;
@@ -81,13 +81,13 @@ a {
 }
 </style>
 <div class="container">
+  <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
+    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
+    <p>Leia o manuscrito</p>
+  </a>
   <article>
     <header>
       <h1>Dicionário Geográfico e Literário de Machado de Assis</h1>
-      <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
-        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
-        <p>Leia o manuscrito</p>
-      </a>
       <p class="lead">
         "Dom Casmurro morava no Engenho Novo." Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
       </p>
