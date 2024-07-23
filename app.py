@@ -88,7 +88,7 @@ a {
       </p>
     </section>
     <section>
-      <h2>Tecnologia de Ponta a Serviço da Literatura</h2>
+      <h2>Tecnologia a serviço da Literatura Brasileira</h2>
       <p>
         Nossa aplicação utiliza a biblioteca Python BeautifulSoup para extrair citações das obras de Machado de Assis, e os modelos GPT-3.5 e GPT-4 para identificar e classificar as localidades mencionadas. Através de consultas SPARQL ao portal <a href="http://dados.literaturabrasileira.ufsc.br" target="_blank">dados.literaturabrasileira.ufsc.br</a>, integramos mapas, citações e textos completos, seguindo os padrões Linked Data.
       </p>
