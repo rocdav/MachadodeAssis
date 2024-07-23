@@ -14,7 +14,7 @@ def display_map(view_type):
     elif view_type == "Ver endpoint SPARQL":
         url = "https://histlearn-jenafuseki.hf.space/#/dataset/Gazetteer/query"
     elif view_type == "Ver Grafos por local":
-        url = "https://histlearn-showgraph.hf.space"    
+        url = "https://histlearn-showgraph.hf.space"
     else:
         url = ""
     
@@ -24,53 +24,70 @@ def display_map(view_type):
 description = """
 <style>
 body {
-  font-family: 'Georgia', serif; /* Fonte para o corpo do texto */
-  line-height: 1.6; /* Espaçamento entre linhas */
-  background-color: #f2e9e1; /* Cor de fundo (bege claro) */
-  color: #333; /* Cor do texto (marrom escuro) */
-  margin: 0;
-  padding: 0;
-}
-h1 {
-  font-family: 'Garamond', serif; /* Fonte para o título principal */
-  font-size: 2.5em; /* Tamanho da fonte do título */
-  text-align: center; /* Centralizar o título */
-  color: #5d4037; /* Cor do título (marrom mais escuro) */
-}
-h2 {
-  color: #5d4037; /* Cor dos subtítulos (marrom mais escuro) */
-  font-family: 'Garamond', serif; /* Fonte para os subtítulos */
-  font-size: 2em; /* Tamanho da fonte dos subtítulos */
-}
-a {
-  color: #9e9d24; /* Cor dos links (amarelo dourado) */
-  text-decoration: none; /* Remover sublinhado dos links */
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    background-color: #f2e9e1;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 .container {
-  max-width: 1000px; /* Largura máxima do contêiner */
-  margin: 20px auto; /* Centralizar o contêiner e adicionar margem */
-  padding: 20px; /* Espaçamento interno do contêiner */
-  background-color: #fff; /* Cor de fundo do contêiner */
-  border: 1px solid #ccc; /* Borda do contêiner */
-  border-radius: 10px; /* Bordas arredondadas */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para o contêiner */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
-.lead {
-  font-style: italic; /* Itálico para a citação inicial */
-  text-align: center; /* Centralizar a citação inicial */
+header {
+    background-color: #5d4037;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
 }
-.btn {
-  display: inline-block; /* Tornar os botões inline-block para centralizar */
-  padding: 10px 20px; /* Espaçamento interno dos botões */
-  background-color: #d7ccc8; /* Cor de fundo dos botões (marrom claro) */
-  color: #fff; /* Cor do texto dos botões (branco) */
-  border: none; /* Remover borda dos botões */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Indicar que é um botão clicável */
-  transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+h1 {
+    font-family: 'Garamond', serif;
+    font-size: 2.5em;
+    margin: 0;
 }
-.btn:hover {
-  background-color: #a1887f; /* Cor de fundo ao passar o mouse (marrom mais escuro) */
+h2 {
+    color: #5d4037;
+    font-family: 'Garamond', serif;
+    font-size: 2em;
+}
+a {
+    color: #9e9d24;
+    text-decoration: none;
+}
+.controls {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.map-container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 600px;
+}
+footer {
+    background-color: #5d4037;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+.loading {
+    display: none;
+    text-align: center;
+    font-style: italic;
+    margin-top: 10px;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
 }
 </style>
 <div class="container">
@@ -110,22 +127,56 @@ a {
 </div>
 """
 
-view_type = gr.Radio(
-    ["Mapa de citações por local",
-     "Mapa de locais citados no conjunto da obra com verbetes",
-     "Mapa de calor com a frequência de locais citados no conjunto da obra",
-     "Mapa de citações a locais por obra",
-     "Mapa de calor de citações por obra",
-     "Ver endpoint SPARQL",
-    "Ver Grafos por local"],
-    label="Selecione a visão do mapa"
-)
+with gr.Blocks(css=description) as demo:
+    gr.HTML("""
+    <header>
+        <h1>Mapeando o Universo de Machado de Assis</h1>
+        <p>Uma Jornada Interativa pelas Localidades de Suas Obras</p>
+    </header>
+    """)
+    
+    with gr.Column(elem_classes="container"):
+        gr.Markdown("""
+        ## Como usar
+        1. Selecione o tipo de visualização desejada no menu abaixo.
+        2. O mapa correspondente será carregado automaticamente.
+        3. Explore os diferentes aspectos das obras de Machado de Assis através dos mapas interativos.
+        """)
+        
+        with gr.Column(elem_classes="controls"):
+            view_type = gr.Radio(
+                ["Mapa de citações por local",
+                 "Mapa de locais citados no conjunto da obra com verbetes",
+                 "Mapa de calor com a frequência de locais citados no conjunto da obra",
+                 "Mapa de citações a locais por obra",
+                 "Mapa de calor de citações por obra",
+                 "Ver endpoint SPARQL",
+                 "Ver Grafos por local"],
+                label="Selecione a visão do mapa"
+            )
+        
+        with gr.Column(elem_classes="map-container"):
+            map_display = gr.HTML()
+            loading = gr.HTML('<div class="loading">Carregando mapa, por favor aguarde...</div>')
+    
+    gr.HTML("""
+    <footer>
+        <p><a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" target="_blank" style="color: #fff;">O artigo resultado deste estudo está em fase de pré-print no SciELO</a></p>
+        <p><a href="https://machadodeassis.net/" target="_blank" style="color: #fff;">Machadodeassis.net</a> | <a href="http://dados.literaturabrasileira.ufsc.br" target="_blank" style="color: #fff;">Dados Literatura Brasileira UFSC</a></p>
+    </footer>
+    """)
 
-with gr.Blocks() as demo:
-    gr.HTML(description)
-    with gr.Column():
-        view_type.render()
-        map_display = gr.HTML()
-    view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
+    def on_view_type_change(view):
+        return gr.update(value='<div class="loading" style="display: block;">Carregando mapa, por favor aguarde...</div>')
+
+    view_type.change(
+        fn=on_view_type_change,
+        inputs=view_type,
+        outputs=loading
+    ).then(
+        fn=display_map,
+        inputs=view_type,
+        outputs=map_display
+    )
 
 demo.launch()
