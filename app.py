@@ -90,6 +90,20 @@ a {
   font-family: 'Garamond', serif;
   margin-top: 10px; /* Espaçamento acima do texto dos autores */
 }
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .scielo-link {
+    order: -1; /* Move o link para cima */
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .scielo-link img {
+    width: 80px; /* Ajusta o tamanho da imagem para telas menores */
+    margin: 5px;
+}
 </style>
 <div class="container">
   <div class="header-container">
