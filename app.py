@@ -103,6 +103,13 @@ a {
   .scielo-link img {
     width: 80px; /* Ajusta o tamanho da imagem para telas menores */
     margin: 5px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+  .lead {
+    font-size: 1em;
+  }
 }
 </style>
 <div class="container">
