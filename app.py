@@ -14,7 +14,7 @@ def display_map(view_type):
     elif view_type == "Ver endpoint SPARQL":
         url = "https://histlearn-jenafuseki.hf.space/#/dataset/Gazetteer/query"
     elif view_type == "Ver Grafos por local":
-        url = "https://histlearn-showgraph.hf.space"    
+        url = "https://histlearn-showgraph.hf.space"
     else:
         url = ""
     
@@ -110,6 +110,8 @@ a {
 </div>
 """
 
+with gr.Blocks(css=description) as demo:
+    gr.HTML(description)
     with gr.Column(elem_classes="container"):
         gr.Markdown("""
         ## Como usar
@@ -134,11 +136,6 @@ a {
             map_display = gr.HTML()
             loading = gr.HTML('<div class="loading">Carregando mapa, por favor aguarde...</div>')
 
-with gr.Blocks() as demo:
-    gr.HTML(description)
-    with gr.Column():
-        view_type.render()
-        map_display = gr.HTML()
     view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
 demo.launch()
