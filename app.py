@@ -169,6 +169,22 @@ a {
   .container {
     width: 95%;
   }
+
+  /* Centralizar o .scielo-link */
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .scielo-link {
+    margin-right: 0;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .scielo-link img {
+    width: 90px; /* Ajuste o tamanho conforme necessário */
+  }
 }
 </style>
 <div class="container">
