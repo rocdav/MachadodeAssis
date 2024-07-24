@@ -21,8 +21,8 @@ def display_map(view_type):
     iframe = f'<iframe src="{url}" width="100%" height="600" frameborder="0"></iframe>'
     return iframe
 
-description = """
-<style>
+css = """
+/* CSS customizado para ocultar o cabeçalho do Hugging Face e estilizar a página */
 body {
   font-family: 'Georgia', serif;
   line-height: 1.6;
@@ -30,7 +30,7 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-  font-size: 16px; /* Base font size for better readability on mobile */
+  font-size: 16px;
 }
 
 .header-container {
@@ -39,7 +39,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
-  padding: 10px; /* Add some padding for mobile */
+  padding: 10px;
 }
 
 .header-content {
@@ -47,7 +47,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  flex-wrap: wrap;
 }
 
 .scielo-link {
@@ -58,7 +58,7 @@ body {
 .scielo-link img {
   width: 100px;
   margin: 10px;
-  max-width: 100%; /* Ensure image doesn't overflow on small screens */
+  max-width: 100%;
 }
 
 h1 {
@@ -67,14 +67,14 @@ h1 {
   text-align: center;
   color: #5d4037;
   margin-top: 20px;
-  word-wrap: break-word; /* Prevent overflow on small screens */
+  word-wrap: break-word;
 }
 
 h2 {
   color: #5d4037;
   font-family: 'Garamond', serif;
   font-size: 2em;
-  word-wrap: break-word; /* Prevent overflow on small screens */
+  word-wrap: break-word;
 }
 
 a {
@@ -91,8 +91,8 @@ a {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
-  width: 90%; /* Use percentage width for better responsiveness */
-  box-sizing: border-box; /* Include padding in width calculation */
+  width: 90%;
+  box-sizing: border-box;
 }
 
 .lead {
@@ -111,7 +111,7 @@ a {
 
 @media (max-width: 600px) {
   body {
-    font-size: 14px; /* Slightly smaller base font size for mobile */
+    font-size: 14px;
   }
 
   .header-content {
@@ -135,7 +135,7 @@ a {
   }
 
   h2 {
-    font-size: 1.5em; /* Smaller subtitle for mobile */
+    font-size: 1.5em;
   }
 
   .lead {
@@ -143,16 +143,15 @@ a {
   }
 
   .container {
-    padding: 15px; /* Smaller padding for mobile */
-    margin: 10px auto; /* Smaller margin for mobile */
+    padding: 15px;
+    margin: 10px auto;
   }
 
   .author {
-    font-size: 1em; /* Smaller author text for mobile */
+    font-size: 1em;
   }
 }
 
-/* Add a media query for tablets */
 @media (min-width: 601px) and (max-width: 1024px) {
   body {
     font-size: 15px;
@@ -170,7 +169,6 @@ a {
     width: 95%;
   }
 
-  /* Centralizar o .scielo-link */
   .header-content {
     flex-direction: column;
     align-items: center;
@@ -183,10 +181,14 @@ a {
   }
 
   .scielo-link img {
-    width: 90px; /* Ajuste o tamanho conforme necessário */
+    width: 90px;
   }
 }
-</style>
+
+.gradio-container header {display: none;}
+"""
+
+description = """
 <div class="container">
   <div class="header-container">
     <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/header.png" alt="Header Image" style="width: 100%; max-width: 1000px; height: auto;">
@@ -228,7 +230,7 @@ a {
 </div>
 """
 
-with gr.Blocks(css=description) as demo:
+with gr.Blocks(css=css) as demo:
     gr.HTML(description)
     with gr.Column(elem_classes="container"):
         gr.Markdown("""
@@ -258,5 +260,3 @@ with gr.Blocks(css=description) as demo:
     view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
 demo.launch()
-
-
