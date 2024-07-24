@@ -1,5 +1,5 @@
 ---
-title: MachadodeAssis
+title: Dicionário Geográfico e Literário de Machado de Assis
 emoji: 🌍
 colorFrom: yellow
 colorTo: purple
