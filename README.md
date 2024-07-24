@@ -10,7 +10,7 @@ pinned: false
 license: apache-2.0
 header: mini
 thumbnail: >-
-  https://cdn-uploads.huggingface.co/production/uploads/650647450761d34d28ddd4c0/v155uFMuYfBs_q1R3Q5hC.png
+  https://cdn-uploads.huggingface.co/production/uploads/650647450761d34d28ddd4c0/BC4TW6QDEU0FjxWAfsv8E.png
 short_description: Dicionário Geográfico e Literário de Machado de Assis
 ---
 
