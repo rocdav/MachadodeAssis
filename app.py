@@ -1,196 +1,31 @@
-import gradio as gr
-
-def display_map(view_type):
-    if view_type == "Mapa de citações por local":
-        url = "https://dancing-lebkuchen-90896f.netlify.app/"
-    elif view_type == "Mapa de locais citados no conjunto da obra com verbetes":
-        url = "https://aquamarine-lamington-f1d38d.netlify.app/"
-    elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
-        url = "https://sprightly-heliotrope-a6037e.netlify.app"
-    elif view_type == "Mapa de citações a locais por obra":
-        url = "https://gregarious-meerkat-7a7b8d.netlify.app/"
-    elif view_type == "Mapa de calor de citações por obra":
-        url = "https://starlit-rabanadas-af1d2b.netlify.app/"
-    elif view_type == "Ver endpoint SPARQL":
-        url = "https://histlearn-jenafuseki.hf.space/#/dataset/Gazetteer/query"
-    elif view_type == "Ver Grafos por local":
-        url = "https://histlearn-showgraph.hf.space"
-    else:
-        url = ""
-    
-    iframe = f'<iframe src="{url}" width="100%" height="600" frameborder="0"></iframe>'
-    return iframe
-
-css = """
-/* CSS customizado para ocultar o cabeçalho do Hugging Face e estilizar a página */
-body {
-  font-family: 'Georgia', serif;
-  line-height: 1.6;
-  background-color: #f2e9e1;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-}
-
-.header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-  padding: 10px;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
-.scielo-link {
-  text-align: center;
-  margin-right: 20px;
-}
-
-.scielo-link img {
-  width: 100px;
-  margin: 10px;
-  max-width: 100%;
-}
-
-h1 {
-  font-family: 'Garamond', serif;
-  font-size: 2.5em;
-  text-align: center;
-  color: #5d4037;
-  margin-top: 20px;
-  word-wrap: break-word;
-}
-
-h2 {
-  color: #5d4037;
-  font-family: 'Garamond', serif;
-  font-size: 2em;
-  word-wrap: break-word;
-}
-
-a {
-  color: #9e9d24;
-  text-decoration: none;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  width: 90%;
-  box-sizing: border-box;
-}
-
-.lead {
-  font-style: italic;
-  text-align: center;
-  font-size: 1.2em;
-}
-
-.author {
-  text-align: right;
-  font-size: 1.2em;
-  color: #5d4037;
-  font-family: 'Garamond', serif;
-  margin-top: 10px;
-}
-
-@media (max-width: 600px) {
-  body {
-    font-size: 14px;
-  }
-
-  .header-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .scielo-link {
-    order: -1;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .scielo-link img {
-    width: 80px;
-    margin: 5px;
-  }
-
-  h1 {
-    font-size: 1.8em;
-  }
-
-  h2 {
-    font-size: 1.5em;
-  }
-
-  .lead {
-    font-size: 1em;
-  }
-
-  .container {
-    padding: 15px;
-    margin: 10px auto;
-  }
-
-  .author {
-    font-size: 1em;
-  }
-}
-
 @media (min-width: 601px) and (max-width: 1024px) {
   body {
     font-size: 15px;
   }
-
   h1 {
     font-size: 2.2em;
   }
-
   h2 {
     font-size: 1.8em;
   }
-
   .container {
     width: 95%;
   }
-
+  /* Centralizar o .scielo-link */
   .header-content {
     flex-direction: column;
     align-items: center;
   }
-
   .scielo-link {
     margin-right: 0;
     margin-bottom: 15px;
     text-align: center;
   }
-
   .scielo-link img {
-    width: 90px;
+    width: 90px; /* Ajuste o tamanho conforme necessário */
   }
 }
-
-.gradio-container header {
-  display: none;
-}
-"""
-
-description = """
+</style>
 <div class="container">
   <div class="header-container">
     <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/header.png" alt="Header Image" style="width: 100%; max-width: 1000px; height: auto;">
@@ -230,23 +65,9 @@ description = """
     </section>
   </article>
 </div>
-<button id="toggle-header" style="position: fixed; bottom: 10px; left: 10px; z-index: 1000;">
-  Toggle Header
-</button>
-
-<script>
-  document.getElementById('toggle-header').addEventListener('click', function() {
-    var header = document.querySelector('.hf-space-header');
-    if (header.style.display === 'none') {
-      header.style.display = 'block';
-    } else {
-      header.style.display = 'none';
-    }
-  });
-</script>
 """
 
-with gr.Blocks(css=css) as demo:
+with gr.Blocks(css=description) as demo:
     gr.HTML(description)
     with gr.Column(elem_classes="container"):
         gr.Markdown("""
@@ -257,20 +78,22 @@ with gr.Blocks(css=css) as demo:
         4. É possível fazer consultas SPARQL ao arquivo de dados através do Jena Fuseki.
         5. Os grafos das consultas aos locais também estão disponíveis.
         """)
-
-        view_type = gr.Radio(
-            ["Mapa de citações por local",
-             "Mapa de locais citados no conjunto da obra com verbetes",
-             "Mapa de calor com a frequência de locais citados no conjunto da obra",
-             "Mapa de citações a locais por obra",
-             "Mapa de calor de citações por obra",
-             "Ver endpoint SPARQL",
-             "Ver Grafos por local"],
-            label="Selecione a visão do mapa"
-        )
         
+        with gr.Column(elem_classes="controls"):
+            view_type = gr.Radio(
+                ["Mapa de citações por local",
+                 "Mapa de locais citados no conjunto da obra com verbetes",
+                 "Mapa de calor com a frequência de locais citados no conjunto da obra",
+                 "Mapa de citações a locais por obra",
+                 "Mapa de calor de citações por obra",
+                 "Ver endpoint SPARQL",
+                 "Ver Grafos por local"],
+                label="Selecione a visão do mapa"
+            )
+    
+    with gr.Column(elem_classes="map-container"):
         map_display = gr.HTML()
 
-        view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
+    view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
 demo.launch()
