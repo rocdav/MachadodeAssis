@@ -23,6 +23,8 @@ def display_map(view_type):
 
 css = """
 /* CSS customizado para ocultar o cabeçalho do Hugging Face e estilizar a página */
+.gradio-container header {display: none;}
+
 body {
   font-family: 'Georgia', serif;
   line-height: 1.6;
@@ -184,8 +186,6 @@ a {
     width: 90px;
   }
 }
-
-.gradio-container header {display: none;}
 """
 
 description = """
@@ -241,22 +241,20 @@ with gr.Blocks(css=css) as demo:
         4. É possível fazer consultas SPARQL ao arquivo de dados através do Jena Fuseki.
         5. Os grafos das consultas aos locais também estão disponíveis.
         """)
+
+        view_type = gr.Radio(
+            ["Mapa de citações por local",
+             "Mapa de locais citados no conjunto da obra com verbetes",
+             "Mapa de calor com a frequência de locais citados no conjunto da obra",
+             "Mapa de citações a locais por obra",
+             "Mapa de calor de citações por obra",
+             "Ver endpoint SPARQL",
+             "Ver Grafos por local"],
+            label="Selecione a visão do mapa"
+        )
         
-        with gr.Column(elem_classes="controls"):
-            view_type = gr.Radio(
-                ["Mapa de citações por local",
-                 "Mapa de locais citados no conjunto da obra com verbetes",
-                 "Mapa de calor com a frequência de locais citados no conjunto da obra",
-                 "Mapa de citações a locais por obra",
-                 "Mapa de calor de citações por obra",
-                 "Ver endpoint SPARQL",
-                 "Ver Grafos por local"],
-                label="Selecione a visão do mapa"
-            )
-    
-    with gr.Column(elem_classes="map-container"):
         map_display = gr.HTML()
 
-    view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
+        view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
 demo.launch()
