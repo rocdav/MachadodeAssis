@@ -228,6 +228,17 @@ description = """
     </section>
   </article>
 </div>
+<button id="toggleHeader" style="position:fixed;bottom:10px;right:10px;">Toggle Header</button>
+<script>
+  document.getElementById('toggleHeader').addEventListener('click', function() {
+    const header = document.querySelector('.gradio-container header');
+    if (header.style.display === 'none') {
+      header.style.display = 'block';
+    } else {
+      header.style.display = 'none';
+    }
+  });
+</script>
 """
 
 with gr.Blocks(css=css) as demo:
@@ -241,7 +252,7 @@ with gr.Blocks(css=css) as demo:
         4. É possível fazer consultas SPARQL ao arquivo de dados através do Jena Fuseki.
         5. Os grafos das consultas aos locais também estão disponíveis.
         """)
-
+        
         view_type = gr.Radio(
             ["Mapa de citações por local",
              "Mapa de locais citados no conjunto da obra com verbetes",
