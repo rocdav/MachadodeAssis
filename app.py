@@ -189,7 +189,7 @@ a {
 </style>
 <div class="container">
   <div class="header-container">
-    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/header.png" alt="Header Image" style="width: 100%; max-width: 1000px; height: auto;">
+    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/Header.jpg" alt="Header Image" style="width: 100%; max-width: 1000px; height: auto;">
     <div class="header-content">
       <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
         <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
