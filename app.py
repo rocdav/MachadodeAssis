@@ -52,7 +52,7 @@ body {
 
 .scielo-link {
   text-align: center;
-  margin-right: 20px;
+  margin: 0 auto;
 }
 
 .scielo-link img {
@@ -90,7 +90,6 @@ a {
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
   width: 90%; /* Use percentage width for better responsiveness */
   box-sizing: border-box; /* Include padding in width calculation */
 }
@@ -107,6 +106,10 @@ a {
   color: #5d4037;
   font-family: 'Garamond', serif;
   margin-top: 10px;
+}
+
+.map-container, .controls {
+  width: 100%; /* Set to 100% to match iframe width */
 }
 
 @media (max-width: 600px) {
