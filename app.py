@@ -1,16 +1,7 @@
 import subprocess
-import sys
 import pkg_resources
+import sys
 
-def ensure_latest_gradio():
-    """Atualiza o Gradio para a versão mais recente de forma segura."""
-    try:
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--upgrade', 'gradio'])
-        print("Gradio atualizado com sucesso!")
-    except Exception as e:
-        print(f"Erro ao atualizar Gradio: {e}")
-
-# Verifica e atualiza o Gradio
 try:
     current_version = pkg_resources.get_distribution('gradio').version
     print(f"Versão atual do Gradio: {current_version}")
@@ -43,6 +34,7 @@ css = """
 .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
 .header-img { width: 100%; max-width: 1000px; height: auto; }
 .content { background: white; padding: 20px; border-radius: 10px; }
+.controls { background: #f5f5f5; padding: 20px; border-radius: 10px; margin: 20px 0; }
 </style>
 """
 
@@ -57,18 +49,22 @@ content = f"""
             <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO" style="width: 100px;">
             <p><a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" target="_blank">Leia o manuscrito</a></p>
         </div>
+        
         <p style="font-style: italic; text-align: center;">
             Dom Casmurro morava no Engenho Novo? Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? 
             Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
         </p>
+        
         <h2>Web Semântica</h2>
         <p>Desenvolvemos uma aplicação web semântica que mapeia as localidades geográficas mencionadas nas obras de Machado de Assis, 
            utilizando dados da enciclopédia <a href="https://machadodeassis.net/" target="_blank">Machadodeassis.net</a>, 
            coordenadas geográficas de Geonames.org e Google Maps.</p>
+
         <h2>Tecnologia a serviço da Literatura Brasileira</h2>
         <p>Nossa aplicação utiliza modelos de IA para identificar e classificar as localidades mencionadas. 
            Através de consultas SPARQL ao portal <a href="http://dados.literaturabrasileira.ufsc.br" target="_blank">dados.literaturabrasileira.ufsc.br</a>, 
            integramos mapas, citações e textos completos.</p>
+
         <p style="text-align: right;">por Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
     </div>
 </div>
@@ -79,7 +75,7 @@ with gr.Blocks() as demo:
     with gr.Column():
         gr.HTML(value=content)
         
-        with gr.Box():
+        with gr.Column(elem_classes="controls"):
             gr.Markdown("""
             ### Como usar
             1. Selecione o tipo de visualização desejada no menu abaixo
@@ -105,5 +101,4 @@ with gr.Blocks() as demo:
             view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
 if __name__ == "__main__":
-    ensure_latest_gradio()
     demo.launch()
