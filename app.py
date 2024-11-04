@@ -1,50 +1,55 @@
 import subprocess
 import pkg_resources
 import gradio as gr
+import logging
+from typing import Optional
 
-# Função para garantir a versão mais recente do Gradio
-def ensure_latest_gradio():
+# Configuração de logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+def ensure_latest_gradio() -> None:
+    """Verifica e atualiza a versão do Gradio se necessário."""
     try:
         current_version = pkg_resources.get_distribution('gradio').version
-        print(f"Versão atual do Gradio: {current_version}")
+        logging.info(f"Versão atual do Gradio: {current_version}")
         subprocess.check_call(['pip', 'install', '--upgrade', 'gradio'])
         new_version = pkg_resources.get_distribution('gradio').version
         if current_version != new_version:
-            print("Gradio foi atualizado com sucesso!")
-            print("Por favor, reinicie seu ambiente/kernel para aplicar as mudanças.")
-            return True
-        return False
+            logging.info(f"Gradio atualizado com sucesso: {current_version} -> {new_version}")
     except Exception as e:
-        print(f"Erro ao atualizar Gradio: {e}")
-        return False
+        logging.error(f"Erro ao atualizar Gradio: {e}")
 
-# Verifica e atualiza o Gradio antes de iniciar a aplicação
-needs_restart = ensure_latest_gradio()
-if needs_restart:
-    print("Por favor, reinicie a aplicação para usar a nova versão do Gradio.")
-    import sys
-    sys.exit(0)
-
-def display_map(view_type):
-    if view_type == "Mapa de citações por local":
-        url = "https://cerulean-crumble-bf9d18.netlify.app/"
-    elif view_type == "Mapa de locais citados no conjunto da obra com verbetes":
-        url = "https://aquamarine-lamington-f1d38d.netlify.app/"
-    elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
-        url = "https://sprightly-heliotrope-a6037e.netlify.app"
-    elif view_type == "Mapa de citações a locais por obra":
-        url = "https://gregarious-meerkat-7a7b8d.netlify.app/"
-    elif view_type == "Mapa de calor de citações por obra":
-        url = "https://starlit-rabanadas-af1d2b.netlify.app/"
-    elif view_type == "Ver endpoint SPARQL":
-        url = "https://histlearn-jenafuseki.hf.space/#/dataset/Gazetteer/query"
-    elif view_type == "Ver Grafos por local":
-        url = "https://histlearn-showgraph.hf.space"
-    else:
-        url = ""
+def display_map(view_type: Optional[str] = None) -> str:
+    """
+    Retorna o HTML do iframe para o mapa selecionado.
     
-    iframe = f'<iframe src="{url}" width="100%" height="600" frameborder="0"></iframe>'
-    return iframe
+    Args:
+        view_type: Tipo de visualização selecionada
+    
+    Returns:
+        HTML string contendo o iframe ou mensagem de instrução
+    """
+    if not view_type:
+        return '<div class="instruction-message">Selecione uma opção acima para visualizar o mapa</div>'
+    
+    urls = {
+        "Mapa de citações por local": "https://cerulean-crumble-bf9d18.netlify.app/",
+        "Mapa de locais citados no conjunto da obra com verbetes": "https://aquamarine-lamington-f1d38d.netlify.app/",
+        "Mapa de calor com a frequência de locais citados no conjunto da obra": "https://sprightly-heliotrope-a6037e.netlify.app",
+        "Mapa de citações a locais por obra": "https://gregarious-meerkat-7a7b8d.netlify.app/",
+        "Mapa de calor de citações por obra": "https://starlit-rabanadas-af1d2b.netlify.app/",
+        "Ver endpoint SPARQL": "https://histlearn-jenafuseki.hf.space/#/dataset/Gazetteer/query",
+        "Ver Grafos por local": "https://histlearn-showgraph.hf.space"
+    }
+    
+    url = urls.get(view_type, "")
+    if not url:
+        return '<div class="error-message">Opção inválida selecionada</div>'
+    
+    return f'<iframe src="{url}" width="100%" height="600" frameborder="0" loading="lazy"></iframe>'
 
 description = """
 <style>
@@ -122,6 +127,21 @@ a {
   color: #5d4037;
   font-family: 'Garamond', serif;
   margin-top: 10px;
+}
+.instruction-message {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.error-message {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff3f3;
+  color: #d32f2f;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 @media (max-width: 600px) {
   body {
@@ -225,34 +245,51 @@ a {
 </div>
 """
 
-with gr.Blocks(css=description) as demo:
-    gr.HTML(description)
-    with gr.Column(elem_classes="container"):
-        gr.Markdown("""
-        ## Como usar
-        1. Selecione o tipo de visualização desejada no menu abaixo.
-        2. O mapa correspondente será carregado automaticamente.
-        3. Explore os diferentes aspectos das obras de Machado de Assis através dos mapas interativos.
-        4. É possível fazer consultas SPARQL ao arquivo de dados através do Jena Fuseki.
-        5. Os grafos das consultas aos locais também estão disponíveis.
-        """)
+def main():
+    """Função principal que inicializa e executa a aplicação."""
+    try:
+        # Verifica e atualiza o Gradio silenciosamente
+        _ = ensure_latest_gradio()
         
-        with gr.Column(elem_classes="controls"):
-            view_type = gr.Radio(
-                ["Mapa de citações por local",
-                 "Mapa de locais citados no conjunto da obra com verbetes",
-                 "Mapa de calor com a frequência de locais citados no conjunto da obra",
-                 "Mapa de citações a locais por obra",
-                 "Mapa de calor de citações por obra",
-                 "Ver endpoint SPARQL",
-                 "Ver Grafos por local"],
-                label="Selecione a visão do mapa"
-            )
-    
-    with gr.Column(elem_classes="map-container"):
-        map_display = gr.HTML()
+        # Configura e inicia a interface Gradio
+        with gr.Blocks(css=description) as demo:
+            gr.HTML(description)
+            with gr.Column(elem_classes="container"):
+                gr.Markdown("""
+                ## Como usar
+                1. Selecione o tipo de visualização desejada no menu abaixo.
+                2. O mapa correspondente será carregado automaticamente.
+                3. Explore os diferentes aspectos das obras de Machado de Assis através dos mapas interativos.
+                4. É possível fazer consultas SPARQL ao arquivo de dados através do Jena Fuseki.
+                5. Os grafos das consultas aos locais também estão disponíveis.
+                """)
+                
+                with gr.Column(elem_classes="controls"):
+                    view_type = gr.Radio(
+                        choices=[
+                            "Mapa de citações por local",
+                            "Mapa de locais citados no conjunto da obra com verbetes",
+                            "Mapa de calor com a frequência de locais citados no conjunto da obra",
+                            "Mapa de citações a locais por obra",
+                            "Mapa de calor de citações por obra",
+                            "Ver endpoint SPARQL",
+                            "Ver Grafos por local"
+                        ],
+                        label="Selecione a visão do mapa",
+                        value=None  # Valor inicial como None
+                    )
+            
+            with gr.Column(elem_classes="map-container"):
+                map_display = gr.HTML(value='<div class="instruction-message">Selecione uma opção acima para visualizar o mapa</div>')
 
-    view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
+            view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
+
+        # Inicia a aplicação
+        demo.launch(show_error=True)
+        
+    except Exception as e:
+        logging.error(f"Erro ao iniciar a aplicação: {e}")
+        raise
 
 if __name__ == "__main__":
-    demo.launch()
+    main()
