@@ -1,39 +1,40 @@
 import subprocess
 import pkg_resources
-import gradio as gr
-import logging
-from typing import Optional
+import sys
+import time
 
-# Configuração de logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-
-def ensure_latest_gradio() -> None:
-    """Verifica e atualiza a versão do Gradio se necessário."""
+def update_gradio():
+    """Atualiza o Gradio para a versão mais recente."""
     try:
-        current_version = pkg_resources.get_distribution('gradio').version
-        logging.info(f"Versão atual do Gradio: {current_version}")
-        subprocess.check_call(['pip', 'install', '--upgrade', 'gradio'])
-        new_version = pkg_resources.get_distribution('gradio').version
-        if current_version != new_version:
-            logging.info(f"Gradio atualizado com sucesso: {current_version} -> {new_version}")
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--upgrade', 'gradio'])
+        print("Gradio atualizado com sucesso!")
+        print("Reiniciando aplicação...")
+        time.sleep(2)  # Espera 2 segundos antes de reiniciar
+        python = sys.executable
+        subprocess.Popen([python] + sys.argv)
+        sys.exit(0)
     except Exception as e:
-        logging.error(f"Erro ao atualizar Gradio: {e}")
+        print(f"Erro ao atualizar Gradio: {e}")
 
-def display_map(view_type: Optional[str] = None) -> str:
-    """
-    Retorna o HTML do iframe para o mapa selecionado.
+# Verifica e atualiza o Gradio se necessário
+try:
+    import gradio as gr
+    current_version = pkg_resources.get_distribution('gradio').version
+    latest_version = subprocess.check_output([sys.executable, '-m', 'pip', 'index', 'versions', 'gradio']).decode().split('\n')[0].split(' ')[-1]
     
-    Args:
-        view_type: Tipo de visualização selecionada
-    
-    Returns:
-        HTML string contendo o iframe ou mensagem de instrução
-    """
+    if current_version != latest_version:
+        print(f"Atualizando Gradio: {current_version} -> {latest_version}")
+        update_gradio()
+    else:
+        print(f"Gradio já está na versão mais recente: {current_version}")
+except:
+    print("Instalando Gradio...")
+    update_gradio()
+
+def display_map(view_type):
+    """Retorna o iframe do mapa selecionado."""
     if not view_type:
-        return '<div class="instruction-message">Selecione uma opção acima para visualizar o mapa</div>'
+        return '<div style="text-align: center; padding: 20px;">Selecione uma opção para visualizar o mapa</div>'
     
     urls = {
         "Mapa de citações por local": "https://cerulean-crumble-bf9d18.netlify.app/",
@@ -46,250 +47,78 @@ def display_map(view_type: Optional[str] = None) -> str:
     }
     
     url = urls.get(view_type, "")
-    if not url:
-        return '<div class="error-message">Opção inválida selecionada</div>'
-    
-    return f'<iframe src="{url}" width="100%" height="600" frameborder="0" loading="lazy"></iframe>'
+    return f'<iframe src="{url}" width="100%" height="600" frameborder="0"></iframe>'
 
-description = """
+# CSS simplificado
+css = """
 <style>
-body {
-  font-family: 'Georgia', serif;
-  line-height: 1.6;
-  background-color: #f2e9e1;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-}
-.header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-  padding: 10px;
-}
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  flex-wrap: wrap;
-}
-.scielo-link {
-  text-align: center;
-  margin-right: 20px;
-}
-.scielo-link img {
-  width: 100px;
-  margin: 10px;
-  max-width: 100%;
-}
-h1 {
-  font-family: 'Garamond', serif;
-  font-size: 2.5em;
-  text-align: center;
-  color: #5d4037;
-  margin-top: 20px;
-  word-wrap: break-word;
-}
-h2 {
-  color: #5d4037;
-  font-family: 'Garamond', serif;
-  font-size: 2em;
-  word-wrap: break-word;
-}
-a {
-  color: #9e9d24;
-  text-decoration: none;
-}
-.container {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  width: 90%;
-  box-sizing: border-box;
-}
-.lead {
-  font-style: italic;
-  text-align: center;
-  font-size: 1.2em;
-}
-.author {
-  text-align: right;
-  font-size: 1.2em;
-  color: #5d4037;
-  font-family: 'Garamond', serif;
-  margin-top: 10px;
-}
-.instruction-message {
-  text-align: center;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-.error-message {
-  text-align: center;
-  padding: 20px;
-  background-color: #fff3f3;
-  color: #d32f2f;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-@media (max-width: 600px) {
-  body {
-    font-size: 14px;
-  }
-  .header-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .scielo-link {
-    order: -1;
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-  .scielo-link img {
-    width: 80px;
-    margin: 5px;
-  }
-  h1 {
-    font-size: 1.8em;
-  }
-  h2 {
-    font-size: 1.5em;
-  }
-  .lead {
-    font-size: 1em;
-  }
-  .container {
-    padding: 15px;
-    margin: 10px auto;
-  }
-  .author {
-    font-size: 1em;
-  }
-}
-@media (min-width: 601px) and (max-width: 1024px) {
-  body {
-    font-size: 15px;
-  }
-  h1 {
-    font-size: 2.2em;
-  }
-  h2 {
-    font-size: 1.8em;
-  }
-  .container {
-    width: 95%;
-  }
-  .header-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .scielo-link {
-    margin-right: 0;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  .scielo-link img {
-    width: 90px;
-  }
-}
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+.header-img { width: 100%; max-width: 1000px; height: auto; }
+.content { background: white; padding: 20px; border-radius: 10px; }
 </style>
+"""
+
+# HTML do conteúdo principal
+content = f"""
+{css}
 <div class="container">
-  <div class="header-container">
-    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/head.png" alt="Header Image" style="width: 100%; max-width: 1000px; height: auto;">
-    <div class="header-content">
-      <a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" class="scielo-link" target="_blank">
-        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO Preprints">
-        <p>Leia o manuscrito</p>
-      </a>
-      <div>
-        <h1>Dicionário Geográfico e Literário de Machado de Assis</h1>
-        <p class="lead">
-          Dom Casmurro morava no Engenho Novo? Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
+    <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/head.png" alt="Header" class="header-img">
+    <div class="content">
+        <div style="text-align: center;">
+            <h1>Dicionário Geográfico e Literário de Machado de Assis</h1>
+            <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/preprints2.png" alt="SciELO" style="width: 100px;">
+            <p><a href="https://preprints.scielo.org/index.php/scielo/preprint/view/9474/version/10010" target="_blank">Leia o manuscrito</a></p>
+        </div>
+        
+        <p style="font-style: italic; text-align: center;">
+            Dom Casmurro morava no Engenho Novo? Você já se perguntou onde fica o Engenho Novo e como ele se relaciona com a trama de Machado de Assis? 
+            Nosso projeto te leva a uma viagem no tempo e espaço, desvendando os cenários que inspiraram um dos maiores escritores brasileiros.
         </p>
-        <p class="author">por Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
-      </div>
+        
+        <h2>Web Semântica</h2>
+        <p>Desenvolvemos uma aplicação web semântica que mapeia as localidades geográficas mencionadas nas obras de Machado de Assis, 
+           utilizando dados da enciclopédia <a href="https://machadodeassis.net/" target="_blank">Machadodeassis.net</a>, 
+           coordenadas geográficas de Geonames.org e Google Maps.</p>
+
+        <h2>Tecnologia a serviço da Literatura Brasileira</h2>
+        <p>Nossa aplicação utiliza modelos de IA para identificar e classificar as localidades mencionadas. 
+           Através de consultas SPARQL ao portal <a href="http://dados.literaturabrasileira.ufsc.br" target="_blank">dados.literaturabrasileira.ufsc.br</a>, 
+           integramos mapas, citações e textos completos.</p>
+
+        <p style="text-align: right;">por Dilvan de Abreu Moreira e Davi Machado da Rocha</p>
     </div>
-  </div>
-  <article>
-    <section>
-      <h2>Web Semântica</h2>
-      <p>
-        Desenvolvemos uma aplicação web semântica que mapeia as localidades geográficas mencionadas nas obras de Machado de Assis, utilizando dados da enciclopédia <a href="https://machadodeassis.net/" target="_blank">Machadodeassis.net</a>, coordenadas geográficas de Geonames.org e Google Maps. Os excertos da obra aparecem localizados em um mapa interativo, o que permite uma melhor compreensão do espaço e do contexto na obra. Ao visualizar as passagens literárias mapeadas geograficamente, é possível obter uma percepção mais profunda de como os locais influenciam e enriquecem as narrativas de Machado de Assis. Isso oferece aos leitores uma maneira de explorar os cenários descritos, revelando a conexão entre as tramas e os espaços geográficos que inspiraram o autor.
-      </p>
-    </section>
-    <section>
-      <h2>Tecnologia a serviço da Literatura Brasileira</h2>
-      <p>
-        Nossa aplicação utiliza a biblioteca Python BeautifulSoup para extrair citações das obras de Machado de Assis, e os modelos GPT-3.5 e GPT-4 para identificar e classificar as localidades mencionadas. Através de consultas SPARQL ao portal <a href="http://dados.literaturabrasileira.ufsc.br" target="_blank">dados.literaturabrasileira.ufsc.br</a>, integramos mapas, citações e textos completos, seguindo os padrões Linked Data.
-      </p>
-    </section>
-    <section>
-      <h2>Estrutura de dados inteligente</h2>
-      <figure>
-        <img src="https://huggingface.co/spaces/histlearn/MachadodeAssis/resolve/main/grafooo.png" alt="Estrutura de Dados" style="max-width: 70%; height: auto; border: 1px solid #000; display: block; margin-left: auto; margin-right: auto;">
-        <figcaption style="text-align: center;">Nossa estrutura de dados, ilustrada acima, garante a organização e interligação das informações, permitindo uma navegação intuitiva e enriquecedora pelo universo machadiano.</figcaption>
-      </figure>
-    </section>
-  </article>
 </div>
 """
 
-def main():
-    """Função principal que inicializa e executa a aplicação."""
-    try:
-        # Verifica e atualiza o Gradio silenciosamente
-        _ = ensure_latest_gradio()
+# Interface Gradio
+with gr.Blocks() as demo:
+    with gr.Column():
+        gr.HTML(value=content)
         
-        # Configura e inicia a interface Gradio
-        with gr.Blocks(css=description) as demo:
-            gr.HTML(description)
-            with gr.Column(elem_classes="container"):
-                gr.Markdown("""
-                ## Como usar
-                1. Selecione o tipo de visualização desejada no menu abaixo.
-                2. O mapa correspondente será carregado automaticamente.
-                3. Explore os diferentes aspectos das obras de Machado de Assis através dos mapas interativos.
-                4. É possível fazer consultas SPARQL ao arquivo de dados através do Jena Fuseki.
-                5. Os grafos das consultas aos locais também estão disponíveis.
-                """)
-                
-                with gr.Column(elem_classes="controls"):
-                    view_type = gr.Radio(
-                        choices=[
-                            "Mapa de citações por local",
-                            "Mapa de locais citados no conjunto da obra com verbetes",
-                            "Mapa de calor com a frequência de locais citados no conjunto da obra",
-                            "Mapa de citações a locais por obra",
-                            "Mapa de calor de citações por obra",
-                            "Ver endpoint SPARQL",
-                            "Ver Grafos por local"
-                        ],
-                        label="Selecione a visão do mapa",
-                        value=None  # Valor inicial como None
-                    )
+        with gr.Box():
+            gr.Markdown("""
+            ### Como usar
+            1. Selecione o tipo de visualização desejada no menu abaixo
+            2. O mapa correspondente será carregado automaticamente
+            3. Explore os diferentes aspectos das obras de Machado de Assis
+            """)
             
-            with gr.Column(elem_classes="map-container"):
-                map_display = gr.HTML(value='<div class="instruction-message">Selecione uma opção acima para visualizar o mapa</div>')
-
+            view_type = gr.Radio(
+                choices=[
+                    "Mapa de citações por local",
+                    "Mapa de locais citados no conjunto da obra com verbetes",
+                    "Mapa de calor com a frequência de locais citados no conjunto da obra",
+                    "Mapa de citações a locais por obra",
+                    "Mapa de calor de citações por obra",
+                    "Ver endpoint SPARQL",
+                    "Ver Grafos por local"
+                ],
+                label="Selecione a visão do mapa"
+            )
+            
+            map_display = gr.HTML(value='<div style="text-align: center; padding: 20px;">Selecione uma opção para visualizar o mapa</div>')
+            
             view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
-        # Inicia a aplicação
-        demo.launch(show_error=True)
-        
-    except Exception as e:
-        logging.error(f"Erro ao iniciar a aplicação: {e}")
-        raise
-
 if __name__ == "__main__":
-    main()
+    demo.launch()
