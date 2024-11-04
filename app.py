@@ -1,21 +1,3 @@
-import sys
-import pkg_resources
-import subprocess
-
-# Verifica se o Gradio está instalado e a versão é a desejada
-try:
-    current_version = pkg_resources.get_distribution('gradio').version
-    required_version = '5.4.0'  # Altere para a versão necessária
-
-    if current_version != required_version:
-        print(f"Versão do Gradio ({current_version}) desatualizada. Tentando atualizar para {required_version}...")
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--upgrade', 'gradio'])
-    else:
-        print(f"Versão atual do Gradio: {current_version}")
-except Exception as e:
-    print(f"Erro ao verificar ou atualizar o Gradio: {e}")
-
-# Importa Gradio e outras bibliotecas necessárias
 import gradio as gr
 
 def display_map(view_type):
@@ -39,7 +21,7 @@ def display_map(view_type):
     iframe = f'<iframe src="{url}" width="100%" height="600" frameborder="0"></iframe>'
     return iframe
 
-# Restante do código, incluindo a criação da interface com Gradio
+# Interface Gradio
 description = """
 <!-- CSS personalizado e conteúdo HTML omitido para brevidade -->
 """
