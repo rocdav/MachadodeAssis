@@ -1,4 +1,29 @@
+import subprocess
+import pkg_resources
 import gradio as gr
+
+# Função para garantir a versão mais recente do Gradio
+def ensure_latest_gradio():
+    try:
+        current_version = pkg_resources.get_distribution('gradio').version
+        print(f"Versão atual do Gradio: {current_version}")
+        subprocess.check_call(['pip', 'install', '--upgrade', 'gradio'])
+        new_version = pkg_resources.get_distribution('gradio').version
+        if current_version != new_version:
+            print("Gradio foi atualizado com sucesso!")
+            print("Por favor, reinicie seu ambiente/kernel para aplicar as mudanças.")
+            return True
+        return False
+    except Exception as e:
+        print(f"Erro ao atualizar Gradio: {e}")
+        return False
+
+# Verifica e atualiza o Gradio antes de iniciar a aplicação
+needs_restart = ensure_latest_gradio()
+if needs_restart:
+    print("Por favor, reinicie a aplicação para usar a nova versão do Gradio.")
+    import sys
+    sys.exit(0)
 
 def display_map(view_type):
     if view_type == "Mapa de citações por local":
@@ -30,7 +55,7 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-  font-size: 16px; /* Base font size for better readability on mobile */
+  font-size: 16px;
 }
 .header-container {
   display: flex;
@@ -38,14 +63,14 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
-  padding: 10px; /* Add some padding for mobile */
+  padding: 10px;
 }
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  flex-wrap: wrap;
 }
 .scielo-link {
   text-align: center;
@@ -54,7 +79,7 @@ body {
 .scielo-link img {
   width: 100px;
   margin: 10px;
-  max-width: 100%; /* Ensure image doesn't overflow on small screens */
+  max-width: 100%;
 }
 h1 {
   font-family: 'Garamond', serif;
@@ -62,13 +87,13 @@ h1 {
   text-align: center;
   color: #5d4037;
   margin-top: 20px;
-  word-wrap: break-word; /* Prevent overflow on small screens */
+  word-wrap: break-word;
 }
 h2 {
   color: #5d4037;
   font-family: 'Garamond', serif;
   font-size: 2em;
-  word-wrap: break-word; /* Prevent overflow on small screens */
+  word-wrap: break-word;
 }
 a {
   color: #9e9d24;
@@ -83,8 +108,8 @@ a {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
-  width: 90%; /* Use percentage width for better responsiveness */
-  box-sizing: border-box; /* Include padding in width calculation */
+  width: 90%;
+  box-sizing: border-box;
 }
 .lead {
   font-style: italic;
@@ -100,7 +125,7 @@ a {
 }
 @media (max-width: 600px) {
   body {
-    font-size: 14px; /* Slightly smaller base font size for mobile */
+    font-size: 14px;
   }
   .header-content {
     flex-direction: column;
@@ -119,20 +144,19 @@ a {
     font-size: 1.8em;
   }
   h2 {
-    font-size: 1.5em; /* Smaller subtitle for mobile */
+    font-size: 1.5em;
   }
   .lead {
     font-size: 1em;
   }
   .container {
-    padding: 15px; /* Smaller padding for mobile */
-    margin: 10px auto; /* Smaller margin for mobile */
+    padding: 15px;
+    margin: 10px auto;
   }
   .author {
-    font-size: 1em; /* Smaller author text for mobile */
+    font-size: 1em;
   }
 }
-/* Add a media query for tablets */
 @media (min-width: 601px) and (max-width: 1024px) {
   body {
     font-size: 15px;
@@ -146,7 +170,6 @@ a {
   .container {
     width: 95%;
   }
-  /* Centralizar o .scielo-link */
   .header-content {
     flex-direction: column;
     align-items: center;
@@ -157,7 +180,7 @@ a {
     text-align: center;
   }
   .scielo-link img {
-    width: 90px; /* Ajuste o tamanho conforme necessário */
+    width: 90px;
   }
 }
 </style>
@@ -231,4 +254,5 @@ with gr.Blocks(css=description) as demo:
 
     view_type.change(fn=display_map, inputs=view_type, outputs=map_display)
 
-demo.launch()
+if __name__ == "__main__":
+    demo.launch()
