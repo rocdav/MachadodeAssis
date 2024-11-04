@@ -1,3 +1,14 @@
+import subprocess
+import sys
+
+# Atualiza o Gradio silenciosamente antes de qualquer importação
+try:
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--upgrade', 'gradio'], 
+                         stdout=subprocess.DEVNULL, 
+                         stderr=subprocess.DEVNULL)
+except:
+    pass
+
 import pkg_resources
 try:
     current_version = pkg_resources.get_distribution('gradio').version
