@@ -1,5 +1,6 @@
 import sys
 import pkg_resources
+import subprocess
 
 # Verifica se o Gradio está instalado e a versão é a desejada
 try:
@@ -8,8 +9,7 @@ try:
 
     if current_version != required_version:
         print(f"Versão do Gradio ({current_version}) desatualizada. Tentando atualizar para {required_version}...")
-        import pip
-        pip.main(['install', '--upgrade', 'gradio'])
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--upgrade', 'gradio'])
     else:
         print(f"Versão atual do Gradio: {current_version}")
 except Exception as e:
