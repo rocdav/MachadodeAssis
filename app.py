@@ -198,7 +198,7 @@ a {
 </div>
 """
 
-with gr.Blocks(css=description) as demo:
+with gr.Blocks() as demo:
     gr.HTML(description)
     with gr.Column(elem_classes="container"):
         gr.Markdown("""
