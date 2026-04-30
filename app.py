@@ -2,19 +2,15 @@ import gradio as gr
 
 def display_map(view_type):
     if view_type == "Mapa de citações por local":
-        url = "https://cerulean-crumble-bf9d18.netlify.app/"
+        url = "https://gazetteer-machado.netlify.app/citacoes-por-local/"
     elif view_type == "Mapa de locais citados no conjunto da obra com verbetes":
-        url = "https://aquamarine-lamington-f1d38d.netlify.app/"
+        url = "https://gazetteer-machado.netlify.app/locais-com-verbetes/"
     elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
-        url = "https://sprightly-heliotrope-a6037e.netlify.app"
+        url = "https://gazetteer-machado.netlify.app/heatmap-geral/"
     elif view_type == "Mapa de citações a locais por obra":
-        url = "https://gregarious-meerkat-7a7b8d.netlify.app/"
+        url = "https://gazetteer-machado.netlify.app/citacoes-por-obra/"
     elif view_type == "Mapa de calor de citações por obra":
-        url = "https://starlit-rabanadas-af1d2b.netlify.app/"
-    elif view_type == "Ver endpoint SPARQL":
-        url = "https://histlearn-jenafuseki.hf.space/#/dataset/Gazetteer/query"
-    elif view_type == "Ver Grafos por local":
-        url = "https://histlearn-showgraph.hf.space"
+        url = "https://gazetteer-machado.netlify.app/heatmap-por-obra/"
     else:
         url = ""
     
@@ -210,19 +206,15 @@ with gr.Blocks(css=description) as demo:
         1. Selecione o tipo de visualização desejada no menu abaixo.
         2. O mapa correspondente será carregado automaticamente.
         3. Explore os diferentes aspectos das obras de Machado de Assis através dos mapas interativos.
-        4. É possível fazer consultas SPARQL ao arquivo de dados através do Jena Fuseki.
-        5. Os grafos das consultas aos locais também estão disponíveis.
         """)
-        
+
         with gr.Column(elem_classes="controls"):
             view_type = gr.Radio(
                 ["Mapa de citações por local",
                  "Mapa de locais citados no conjunto da obra com verbetes",
                  "Mapa de calor com a frequência de locais citados no conjunto da obra",
                  "Mapa de citações a locais por obra",
-                 "Mapa de calor de citações por obra",
-                 "Ver endpoint SPARQL",
-                 "Ver Grafos por local"],
+                 "Mapa de calor de citações por obra"],
                 label="Selecione a visão do mapa"
             )
     
