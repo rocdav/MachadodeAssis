@@ -13,6 +13,8 @@ def display_map(view_type):
         url = "https://gazetteer-machado.netlify.app/heatmap-por-obra/"
     elif view_type == "Grafo de relações por local":
         url = "https://gazetteer-machado.netlify.app/grafo-por-local/"
+    elif view_type == "Mapa do Rio bairro a bairro":
+        url = "https://gazetteer-machado.netlify.app/rio-bairro-a-bairro/"
     else:
         url = ""
     
@@ -217,7 +219,8 @@ with gr.Blocks() as demo:
                  "Mapa de calor com a frequência de locais citados no conjunto da obra",
                  "Mapa de citações a locais por obra",
                  "Mapa de calor de citações por obra",
-                 "Grafo de relações por local"],
+                 "Grafo de relações por local",
+                 "Mapa do Rio bairro a bairro"],
                 label="Selecione a visão do mapa"
             )
     
