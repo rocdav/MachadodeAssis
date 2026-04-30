@@ -19,6 +19,8 @@ def display_map(view_type):
         url = "https://gazetteer-machado.netlify.app/buscar-citacoes/"
     elif view_type == "Repertório de personagens e referências":
         url = "https://gazetteer-machado.netlify.app/personagens/"
+    elif view_type == "Repertório de instituições":
+        url = "https://gazetteer-machado.netlify.app/instituicoes/"
     else:
         url = ""
     
@@ -226,7 +228,8 @@ with gr.Blocks() as demo:
                  "Grafo de relações por local",
                  "Mapa do Rio bairro a bairro",
                  "Busca textual nas citações",
-                 "Repertório de personagens e referências"],
+                 "Repertório de personagens e referências",
+                 "Repertório de instituições"],
                 label="Selecione a visão do mapa"
             )
     
