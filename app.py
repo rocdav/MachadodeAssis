@@ -26,7 +26,7 @@ def display_map(view_type):
     else:
         url = ""
     
-    iframe = f'<iframe src="{url}" width="100%" height="600" frameborder="0"></iframe>'
+    iframe = f'<iframe src="{url}" width="100%" height="600" frameborder="0" allowfullscreen allow="fullscreen"></iframe>'
     return iframe
 
 description = """
