@@ -27,7 +27,21 @@ def display_map(view_type):
         url = ""
     
     iframe = f'<iframe src="{url}" width="100%" height="600" frameborder="0" allowfullscreen allow="fullscreen"></iframe>'
-    return iframe
+    cta = (
+        f'<div style="text-align:center; margin: 18px 0 8px;">'
+        f'  <a href="{url}" target="_blank" rel="noopener" '
+        f'     style="display:inline-block; padding:14px 28px; background:#9e9d24; color:#fff; '
+        f'            border-radius:6px; font-family:Garamond,serif; font-size:1.15em; '
+        f'            text-decoration:none; font-weight:bold; '
+        f'            box-shadow:0 2px 6px rgba(0,0,0,0.15);">'
+        f'    ⛶  Abrir esta visualização em tela cheia &#8599;'
+        f'  </a>'
+        f'  <div style="margin-top:6px; font-size:0.85em; color:#777; font-style:italic;">'
+        f'    Recomendado em celular ou para uso prolongado'
+        f'  </div>'
+        f'</div>'
+    )
+    return iframe + cta
 
 description = """
 <style>
