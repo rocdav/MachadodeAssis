@@ -3,8 +3,6 @@ import gradio as gr
 def display_map(view_type):
     if view_type == "Mapa de citações por local":
         url = "https://gazetteer-machado.netlify.app/citacoes-por-local/"
-    elif view_type == "Mapa de locais citados no conjunto da obra com verbetes":
-        url = "https://gazetteer-machado.netlify.app/locais-com-verbetes/"
     elif view_type == "Mapa de calor com a frequência de locais citados no conjunto da obra":
         url = "https://gazetteer-machado.netlify.app/heatmap-geral/"
     elif view_type == "Mapa de citações a locais por obra":
@@ -237,7 +235,6 @@ with gr.Blocks() as demo:
         with gr.Column(elem_classes="controls"):
             view_type = gr.Radio(
                 ["Mapa de citações por local",
-                 "Mapa de locais citados no conjunto da obra com verbetes",
                  "Mapa de calor com a frequência de locais citados no conjunto da obra",
                  "Mapa de citações a locais por obra",
                  "Mapa de calor de citações por obra",
