@@ -69,26 +69,23 @@
    Sobrescrevemos para dar mais ar ao mapa e tornar o colapso obvio.
 --------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-    /* Altura da sidebar aberta — ocupa 42% da tela, deixando o mapa visivel. */
+    /* Altura da sidebar aberta — 38% da tela. O mapa fica com ~62%, que
+       em iPhone SE (568h - 44 topnav) significa ~324 px utilizaveis. */
     .layout > .sidebar {
-        height: 42%;
-        max-height: 42%;
+        height: 38%;
+        max-height: 38%;
     }
 
-    /* Especificidade (0,3,0) > (0,2,0) da regra acima: garante que ao colapsar
-       a sidebar encolha de verdade no layout flex e o mapa ocupe o espaço ganho.
-       Sem isso, .layout > .sidebar { height: 42% } (carregado depois do style.css
-       local) vencia na cascata e deixava um gap morto entre o header e o mapa. */
     .layout > .sidebar.collapsed {
         height: 56px;
         max-height: 56px;
     }
 
-    /* Linha-do-tempo tem mais controles (slider, play, filtros, gráfico) e precisa
+    /* Linha-do-tempo tem mais controles (slider, play, filtros) e precisa
        de mais espaço. Especificidade (0,3,0) supera a regra base (0,2,0). */
     .page-timeline .layout > .sidebar {
-        height: 52%;
-        max-height: 52%;
+        height: 50%;
+        max-height: 50%;
     }
 
     /* Handle de arrasto visual no topo da sidebar - comunica que ela e
@@ -117,15 +114,36 @@
         margin: 0 !important;
     }
 
-    /* Botao de toggle maior e mais visivel */
+    /* Estilo base do toggle (compartilhado entre todas as views; injetado
+       em runtime por _shared/sidebar-toggle.js). Antes vivia duplicado em
+       cada style.css.
+       Padding lateral fluido: 14px em 320 px de largura, 20px em telas maiores;
+       padding-right fixo em 56px reserva espaco para o toggle absoluto. */
+    .layout > .sidebar > .sidebar-header {
+        position: relative;
+        padding-left: clamp(14px, 4vw, 20px);
+        padding-right: 56px;
+    }
     .layout > .sidebar .sidebar-toggle {
-        width: 38px !important;
-        height: 38px !important;
-        font-size: 1.2em !important;
-        top: 10px !important;
-        right: 10px !important;
+        display: inline-flex;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid #d8cfc2;
+        background: #fff;
+        color: #5d4037;
+        font-size: 1.2em;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        padding: 0;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     }
+    .layout > .sidebar .sidebar-toggle:hover { background: #faf6f1; }
     .layout > .sidebar.collapsed .sidebar-toggle {
         background: #9e9d24 !important;
         color: #fff !important;
@@ -147,13 +165,19 @@
 
 @media (max-width: 480px) {
     .layout > .sidebar {
-        height: 46%;
-        max-height: 46%;
+        height: 42%;
+        max-height: 42%;
     }
 
     .layout > .sidebar.collapsed {
         height: 56px;
         max-height: 56px;
+    }
+
+    /* Subtitulo decorativo nao cabe em telefones pequenos — o h2 da view ja
+       comunica a intencao. Mantido no breakpoint 480-768 para tablets. */
+    .layout > .sidebar > .sidebar-header > .subtitle {
+        display: none;
     }
 }
 

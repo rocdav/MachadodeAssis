@@ -10,7 +10,7 @@ html, body {
 .layout {
     display: flex;
     height: 100%;
-    min-height: 360px;
+    min-height: 320px;
 }
 
 .sidebar-toggle {
@@ -309,51 +309,22 @@ html, body {
     text-align: center;
 }
 
+/* Regras mobile comuns (altura, toggle, popups, paddings) vivem em
+   ../_shared/mobile-map.css. Aqui ficam apenas overrides especificos. */
 @media (max-width: 768px) {
     .layout { flex-direction: column; }
     .sidebar {
-        width: 100%; max-width: none;
+        width: 100%;
+        max-width: none;
         flex: 0 0 auto;
-        height: 38%;
-        max-height: 38%;
         min-height: 0;
         border-right: none;
         border-bottom: 1px solid #ccc;
         transition: height 0.25s ease, max-height 0.25s ease;
     }
-    .sidebar.collapsed {
-        height: 56px;
-        max-height: 56px;
-        overflow: hidden;
-    }
-    .sidebar.collapsed .sidebar-header {
-        padding: 12px 16px;
-    }
+    .sidebar.collapsed { overflow: hidden; }
     .sidebar.collapsed .sidebar-header > *:not(h2):not(.sidebar-toggle) { display: none; }
     .sidebar.collapsed .results { display: none; }
     .results { min-height: 0; }
-    .sidebar-header {
-        position: relative;
-        padding-right: 50px;
-    }
-    .sidebar-toggle {
-        display: inline-flex;
-        position: absolute;
-        top: 12px;
-        right: 14px;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: 1px solid #d8cfc2;
-        background: #fff;
-        color: #5d4037;
-        font-size: 1.1em;
-        cursor: pointer;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-        padding: 0;
-    }
-    .sidebar-toggle:hover { background: #faf6f1; }
     #map { flex: 1 1 auto; min-height: 0; }
 }
