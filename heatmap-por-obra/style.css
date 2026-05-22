@@ -207,4 +207,6 @@ html, body {
     }
     .sidebar-toggle:hover { background: #faf6f1; }
     #map { flex: 1 1 auto; min-height: 0; }
+    /* select não encolhe sozinho em flex sem min-width:0 — evita overflow horizontal */
+    .filter-row select { min-width: 0; max-width: 100%; }
 }

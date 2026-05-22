@@ -211,4 +211,5 @@ html, body {
     }
     .sidebar-toggle:hover { background: #faf6f1; }
     #map { flex: 1 1 auto; min-height: 0; }
+    .filter-row select { min-width: 0; max-width: 100%; }
 }

@@ -27,15 +27,6 @@
         }
     ];
 
-    function inIframe() {
-        try { return window.self !== window.top; } catch (e) { return true; }
-    }
-    function isFullscreen() {
-        return !!(document.fullscreenElement || document.webkitFullscreenElement);
-    }
-    function shouldShow() {
-        return !inIframe() || isFullscreen();
-    }
     function currentSlug() {
         const m = location.pathname.match(/\/([^\/]+)\/?$/);
         return m ? m[1] : '';
@@ -114,13 +105,9 @@
     }
 
     let nav = null;
-    function syncVisibility() {
-        if (shouldShow()) {
-            if (!nav) nav = build();
-            document.body.classList.add('gaz-nav-on');
-        } else {
-            document.body.classList.remove('gaz-nav-on');
-        }
+    function show() {
+        if (!nav) nav = build();
+        document.body.classList.add('gaz-nav-on');
         setTimeout(() => {
             window.dispatchEvent(new Event('resize'));
             if (window._gazMap && typeof window._gazMap.invalidateSize === 'function') {
@@ -133,9 +120,7 @@
     }
 
     function init() {
-        syncVisibility();
-        document.addEventListener('fullscreenchange', syncVisibility);
-        document.addEventListener('webkitfullscreenchange', syncVisibility);
+        show();
     }
 
     if (document.readyState === 'loading') {

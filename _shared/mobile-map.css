@@ -84,6 +84,13 @@
         max-height: 56px;
     }
 
+    /* Linha-do-tempo tem mais controles (slider, play, filtros, gráfico) e precisa
+       de mais espaço. Especificidade (0,3,0) supera a regra base (0,2,0). */
+    .page-timeline .layout > .sidebar {
+        height: 52%;
+        max-height: 52%;
+    }
+
     /* Handle de arrasto visual no topo da sidebar - comunica que ela e
        um painel colapsavel. */
     .layout > .sidebar > .sidebar-header::before {

@@ -462,4 +462,18 @@ html, body {
     }
     .sidebar-toggle:hover { background: #faf6f1; }
     #map { flex: 1 1 auto; min-height: 0; }
+
+    /* Oculta o gráfico de décadas em mobile: é decorativo e consome ~90px
+       de uma sidebar já cheia. O slider já comunica a dimensão temporal. */
+    .chart-block { display: none; }
+
+    /* Texto "tocar ano a ano" é redundante ao lado dos botões em tela pequena */
+    .play-help { display: none; }
+
+    /* Compacta o bloco do slider para ganhar espaço */
+    .range-block { margin: 6px 0 8px; }
+    .range-display { font-size: 1.1em; margin-bottom: 2px; }
+
+    /* select não encolhe em flex sem min-width:0 */
+    .filter-row select { min-width: 0; max-width: 100%; }
 }
