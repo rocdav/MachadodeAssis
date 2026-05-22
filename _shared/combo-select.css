@@ -61,7 +61,9 @@
     border: 1px solid #d8cfc2;
     border-radius: 4px;
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
-    z-index: 1200;
+    /* Acima do .gaz-fs-btn (1500) e abaixo da topnav (2000) para nao
+       deixar o botao "Tela cheia" cobrir os ultimos itens do dropdown. */
+    z-index: 1700;
 }
 .combo-wrap.open .combo-panel { display: block; }
 .combo-panel .results,
@@ -80,6 +82,22 @@
 .layout.combo-active .sidebar > ul.place-list {
     display: none;
 }
+
+/* Cada view define `.sidebar { overflow: hidden }` para conter a lista de
+   resultados, mas isso corta o dropdown do combo (position: absolute), e o
+   #map adjacente aparece sobreposto a parte cortada. Com a combo ativa, a
+   lista ja vive dentro do .combo-panel (com overflow proprio), entao a
+   sidebar pode soltar verticalmente sem efeitos colaterais. */
+.layout.combo-active > .sidebar {
+    overflow: visible;
+}
+
+/* Enquanto a combo esta aberta, esconde o botao "Tela cheia": ele e parte
+   dos controles do mapa e nao deve concorrer com a navegacao da lista. */
+.layout.combo-active:has(.combo-wrap.open) ~ .gaz-fs-btn,
+body:has(.combo-wrap.open) .gaz-fs-btn {
+    display: none !important;
+}
 @media (max-width: 768px) {
     .combo-wrap {
         padding: 0 16px 10px;
@@ -95,7 +113,8 @@
         border-radius: 14px 14px 0 0;
         border: 1px solid #d8cfc2;
         box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.28);
-        z-index: 1500;
+        /* Acima do .gaz-fs-btn (1500) em mobile tambem. */
+        z-index: 1700;
         padding-top: 8px;
     }
     .combo-wrap.open .combo-panel::before {
