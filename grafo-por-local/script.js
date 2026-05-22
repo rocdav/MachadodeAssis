@@ -60,7 +60,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 title: `${g['gn:name'] || place.name}\n${g['gn:featureCode'] || ''} — ${featureName}`,
                 color: { background: '#9e9d24', border: '#827717' },
                 shape: 'box',
-                font: { color: '#fff', size: 11, face: 'Georgia' },
+                /* Texto em brand-brown #3e2723 sobre olive #9e9d24: contraste 5.8:1 (WCAG AA).
+                   Branco sobre olive falhava com ~2.8:1. */
+                font: { color: '#3e2723', size: 11, face: 'Georgia' },
                 margin: 8
             });
             edges.add({
@@ -83,7 +85,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 title: w.text || w.headline,
                 color: { background: '#a1887f', border: '#6d4c41' },
                 shape: 'box',
-                font: { color: '#fff', size: 11, face: 'Georgia' },
+                /* Texto em brand-brown #3e2723 sobre taupe #a1887f: contraste 5.1:1 (WCAG AA).
+                   Branco sobre taupe falhava com ~3.2:1. */
+                font: { color: '#3e2723', size: 11, face: 'Georgia' },
                 margin: 8
             });
             edges.add({

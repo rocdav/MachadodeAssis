@@ -69,22 +69,23 @@
    Sobrescrevemos para dar mais ar ao mapa e tornar o colapso obvio.
 --------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-    /* Altura da sidebar aberta — 38% da tela. O mapa fica com ~62%, que
-       em iPhone SE (568h - 44 topnav) significa ~324 px utilizaveis. */
+    /* Sidebar encolhe pro tamanho do conteudo, com teto de 38% da tela.
+       Views com pouco conteudo (citacoes-por-local/obra, rio-bairro-a-bairro)
+       deixavam ~120 px de margem branca antes do mapa quando o conteudo nao
+       chegava aos 38%. Com max-height + flex-basis: auto, a sidebar respira
+       conforme o conteudo e o mapa ganha o resto pelo flex: 1. Views mais
+       densas (heatmaps) ja enchem o teto, entao seguem visualmente iguais. */
     .layout > .sidebar {
-        height: 38%;
         max-height: 38%;
     }
 
     .layout > .sidebar.collapsed {
-        height: 56px;
         max-height: 56px;
     }
 
     /* Linha-do-tempo tem mais controles (slider, play, filtros) e precisa
        de mais espaço. Especificidade (0,3,0) supera a regra base (0,2,0). */
     .page-timeline .layout > .sidebar {
-        height: 50%;
         max-height: 50%;
     }
 
@@ -165,12 +166,10 @@
 
 @media (max-width: 480px) {
     .layout > .sidebar {
-        height: 42%;
         max-height: 42%;
     }
 
     .layout > .sidebar.collapsed {
-        height: 56px;
         max-height: 56px;
     }
 
