@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linha do tempo (1858–1908) — Machado de Assis</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../_shared/mobile-map.css" />
+    <link rel="stylesheet" href="../_shared/fullscreen.css" />
+    <link rel="stylesheet" href="../_shared/combo-select.css" />
+    <link rel="stylesheet" href="../_shared/detail-panel.css" />
+    <link rel="stylesheet" href="../_shared/topnav.css" />
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h2>Linha do tempo</h2>
+                <p class="subtitle">A geografia de Machado, ano a ano (1858–1908).</p>
+
+                <div class="range-block">
+                    <div class="range-display">
+                        <span id="yearMinLabel">1858</span>
+                        <span class="range-dash">—</span>
+                        <span id="yearMaxLabel">1908</span>
+                    </div>
+                    <div class="range-slider">
+                        <div class="range-track"></div>
+                        <div class="range-fill" id="rangeFill"></div>
+                        <input type="range" id="yearMin" min="1858" max="1908" value="1858" step="1">
+                        <input type="range" id="yearMax" min="1858" max="1908" value="1908" step="1">
+                    </div>
+                    <div class="range-ticks">
+                        <span>1858</span><span>1870</span><span>1880</span><span>1890</span><span>1900</span><span>1908</span>
+                    </div>
+                    <div class="play-controls">
+                        <button class="play-btn" id="playBtn" title="Tocar a evolução ano a ano" aria-label="Tocar">▶</button>
+                        <button class="play-btn" id="resetBtn" title="Voltar ao período completo" aria-label="Resetar">↺</button>
+                        <span class="play-help">tocar ano a ano</span>
+                    </div>
+                </div>
+
+                <div class="filter-block">
+                    <div class="filter-row">
+                        <label>Gênero:</label>
+                        <div class="genre-toggle" role="tablist">
+                            <button class="genre-btn active" data-genre="all" role="tab">Ambos</button>
+                            <button class="genre-btn" data-genre="Conto" role="tab">Contos</button>
+                            <button class="genre-btn" data-genre="Romance" role="tab">Romances</button>
+                        </div>
+                    </div>
+                    <div class="filter-row">
+                        <label for="placeClass">Tipo de lugar:</label>
+                        <select id="placeClass"></select>
+                    </div>
+                </div>
+
+                <div class="stats" id="stats">Carregando…</div>
+
+                <div class="chart-block">
+                    <div class="chart-title">Lugares novos por década</div>
+                    <div id="decChart" class="dec-chart"></div>
+                    <p class="chart-help">Cada barra mostra quantos lugares <em>estreiam</em> na obra de Machado naquela década.</p>
+                </div>
+            </header>
+            <ul class="results" id="results"></ul>
+        </aside>
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="../_shared/leaflet-popup.js"></script>
+    <script src="script.js"></script>
+    <script src="../_shared/mobile-map.js" defer></script>
+    <script src="../_shared/sidebar-toggle.js" defer></script>
+    <script src="../_shared/fullscreen.js" defer></script>
+    <script src="../_shared/combo-select.js" defer></script>
+    <script src="../_shared/detail-panel.js" defer></script>
+    <script src="../_shared/topnav.js" defer></script>
+</body>
+</html>

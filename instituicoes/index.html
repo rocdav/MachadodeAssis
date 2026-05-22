@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repertório de instituições — Machado de Assis</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../_shared/mobile-map.css" />
+    <link rel="stylesheet" href="../_shared/fullscreen.css" />
+    <link rel="stylesheet" href="../_shared/combo-select.css" />
+    <link rel="stylesheet" href="../_shared/detail-panel.css" />
+    <link rel="stylesheet" href="../_shared/topnav.css" />
+</head>
+<body
+    data-detail-empty="Selecione uma instituição para ver o verbete."
+    data-detail-none="(Sem verbete para esta instituição.)"
+    data-citation-title="Citações"
+    data-citation-none="(Sem citações associadas a esta instituição.)">
+    <div class="layout">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h2>Instituições e referências</h2>
+                <p class="subtitle">Cafés, teatros, escolas, casas legislativas e demais instituições citadas por Machado.</p>
+                <div class="search-box">
+                    <input type="search" id="search" placeholder="Buscar por nome…" autocomplete="off" />
+                </div>
+                <div class="controls">
+                    <label>Tipo:</label>
+                    <select id="tipoSelect"></select>
+                </div>
+                <div class="controls">
+                    <label>Ordenar:</label>
+                    <select id="sortSelect">
+                        <option value="name">por nome</option>
+                        <option value="count">por nº de citações</option>
+                    </select>
+                </div>
+                <div class="stats" id="stats">Carregando…</div>
+            </header>
+            <ul class="results" id="results"></ul>
+        </aside>
+        <div id="map"></div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="../_shared/leaflet-popup.js"></script>
+    <script src="script.js"></script>
+    <script src="../_shared/mobile-map.js" defer></script>
+    <script src="../_shared/sidebar-toggle.js" defer></script>
+    <script src="../_shared/fullscreen.js" defer></script>
+    <script src="../_shared/combo-select.js" defer></script>
+    <script src="../_shared/detail-panel.js" defer></script>
+    <script src="../_shared/topnav.js" defer></script>
+</body>
+</html>

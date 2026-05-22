@@ -1,2 +1,0 @@
-gradio==5.50.0
-audioop-lts; python_version >= "3.13"

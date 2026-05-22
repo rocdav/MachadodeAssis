@@ -1,0 +1,17 @@
+services:
+  gazetteer:
+    build: .
+    image: gazetteer-machado:latest
+    container_name: gazetteer-machado
+    ports:
+      - "${PORT:-8080}:7860"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

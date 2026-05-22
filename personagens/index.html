@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repertório de personagens e referências — Machado de Assis</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../_shared/fullscreen.css" />
+    <link rel="stylesheet" href="../_shared/combo-select.css" />
+    <link rel="stylesheet" href="../_shared/topnav.css" />
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h2>Personagens e referências</h2>
+                <p class="subtitle">Figuras históricas, mitológicas, bíblicas e literárias citadas por Machado.</p>
+                <div class="search-box">
+                    <input type="search" id="search" placeholder="Buscar por nome…" autocomplete="off" />
+                </div>
+                <div class="controls">
+                    <label>Ordenar:</label>
+                    <select id="sortSelect">
+                        <option value="name">por nome</option>
+                        <option value="count">por nº de citações</option>
+                    </select>
+                </div>
+                <div class="stats" id="stats">Carregando…</div>
+            </header>
+            <ul class="results" id="results"></ul>
+        </aside>
+        <main class="content" id="content">
+            <p class="hint"><em>Selecione um personagem para ver o verbete e as citações na obra de Machado.</em></p>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script src="../_shared/fullscreen.js" defer></script>
+    <script src="../_shared/combo-select.js" defer></script>
+    <script src="../_shared/topnav.js" defer></script>
+</body>
+</html>

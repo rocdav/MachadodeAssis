@@ -1,0 +1,286 @@
+@media (max-width: 768px) {
+    html,
+    body {
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+
+    /* Respeita o padding-top da topnav fixa (44px em mobile, 48px desktop).
+       Antes usavamos 100dvh aqui, mas isso ignorava o padding do body e
+       deixava ~44px do mapa cortados na parte inferior. */
+    .layout {
+        height: 100%;
+        overflow: hidden;
+    }
+    /* Sem a topnav (em iframe, p.ex.) o body nao tem padding e podemos ocupar
+       todo o viewport com altura dinamica. */
+    body:not(.gaz-nav-on) .layout {
+        height: 100vh;
+        height: 100dvh;
+    }
+
+    /* Controles do Leaflet com area de toque maior */
+    .leaflet-control-zoom a {
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+        font-size: 18px;
+    }
+
+    /* Mantem os controles distantes da borda da sidebar */
+    .leaflet-top.leaflet-left {
+        top: 8px;
+        left: 8px;
+    }
+
+    /* Atribuicao: legivel mas sem cobrir muito do mapa */
+    .leaflet-control-attribution {
+        max-width: 68vw;
+        font-size: 10px;
+        white-space: normal;
+        line-height: 1.3;
+    }
+
+    .leaflet-popup {
+        max-width: calc(100vw - 24px) !important;
+    }
+
+    .leaflet-popup-content-wrapper {
+        max-height: 56dvh;
+        overflow: hidden;
+    }
+
+    .leaflet-popup-content {
+        width: calc(100vw - 72px) !important;
+        max-height: 50dvh;
+        overflow-y: auto;
+        overflow-wrap: anywhere;
+        margin: 14px;
+    }
+
+    .leaflet-popup-content .popup-content {
+        max-width: none;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   Ajustes globais de sidebar em mobile.
+   Todas as paginas de mapa tem a mesma estrutura .layout > .sidebar + #map.
+   Sobrescrevemos para dar mais ar ao mapa e tornar o colapso obvio.
+--------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    /* Altura da sidebar aberta — ocupa 42% da tela, deixando o mapa visivel. */
+    .layout > .sidebar {
+        height: 42%;
+        max-height: 42%;
+    }
+
+    /* Especificidade (0,3,0) > (0,2,0) da regra acima: garante que ao colapsar
+       a sidebar encolha de verdade no layout flex e o mapa ocupe o espaço ganho.
+       Sem isso, .layout > .sidebar { height: 42% } (carregado depois do style.css
+       local) vencia na cascata e deixava um gap morto entre o header e o mapa. */
+    .layout > .sidebar.collapsed {
+        height: 56px;
+        max-height: 56px;
+    }
+
+    /* Handle de arrasto visual no topo da sidebar - comunica que ela e
+       um painel colapsavel. */
+    .layout > .sidebar > .sidebar-header::before {
+        content: "";
+        display: block;
+        width: 44px;
+        height: 4px;
+        margin: -4px auto 10px;
+        border-radius: 2px;
+        background: #d8cfc2;
+        opacity: 0.9;
+    }
+    .layout > .sidebar.collapsed > .sidebar-header::before {
+        margin: 0 auto 6px;
+    }
+
+    /* Quando colapsada, o header inteiro e tocavel */
+    .layout > .sidebar.collapsed > .sidebar-header {
+        cursor: pointer;
+        padding-right: 56px !important;
+    }
+    .layout > .sidebar.collapsed > .sidebar-header h2 {
+        font-size: 1.1em !important;
+        margin: 0 !important;
+    }
+
+    /* Botao de toggle maior e mais visivel */
+    .layout > .sidebar .sidebar-toggle {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1.2em !important;
+        top: 10px !important;
+        right: 10px !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .layout > .sidebar.collapsed .sidebar-toggle {
+        background: #9e9d24 !important;
+        color: #fff !important;
+        border-color: #9e9d24 !important;
+    }
+
+    /* Sombra suave entre sidebar e mapa */
+    .layout > .sidebar:not(.collapsed) {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Botao fullscreen no canto inferior esquerdo, sem cobrir a atribuicao */
+    .gaz-fs-btn {
+        bottom: 8px !important;
+        left: 8px !important;
+        right: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .layout > .sidebar {
+        height: 46%;
+        max-height: 46%;
+    }
+
+    .layout > .sidebar.collapsed {
+        height: 56px;
+        max-height: 56px;
+    }
+}
+
+.gaz-mobile-sheet {
+    display: none;
+}
+
+.leaflet-marker-icon.gaz-selected-marker {
+    filter:
+        hue-rotate(155deg)
+        saturate(2.25)
+        brightness(1.08)
+        drop-shadow(0 0 2px #fff)
+        drop-shadow(0 0 9px rgba(198, 40, 40, 0.92));
+    z-index: 10000 !important;
+}
+
+.leaflet-marker-shadow.gaz-selected-marker-shadow {
+    filter: opacity(0.72) blur(0.4px);
+}
+
+.leaflet-interactive.gaz-selected-marker {
+    stroke: #c62828 !important;
+    stroke-width: 5 !important;
+    fill: #ffeb3b !important;
+    fill-opacity: 0.95 !important;
+    filter: drop-shadow(0 0 7px rgba(198, 40, 40, 0.8));
+}
+
+.gaz-selected-halo {
+    stroke: #c62828 !important;
+    stroke-width: 4 !important;
+    stroke-opacity: 0.95 !important;
+    fill: #ffeb3b !important;
+    fill-opacity: 0.26 !important;
+    filter: drop-shadow(0 0 8px rgba(198, 40, 40, 0.85));
+}
+
+@media (max-width: 768px) {
+    .gaz-mobile-sheet {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1200;
+        display: flex;
+        flex-direction: column;
+        max-height: 66dvh;
+        background: #fff;
+        border-top: 1px solid #d8cfc2;
+        border-radius: 8px 8px 0 0;
+        box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.22);
+        color: #333;
+        transform: translateY(105%);
+        transition: transform 0.22s ease;
+        visibility: hidden;
+    }
+
+    .gaz-mobile-sheet.is-open {
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .gaz-mobile-sheet__bar {
+        width: 42px;
+        height: 4px;
+        margin: 8px auto 2px;
+        border-radius: 999px;
+        background: #d8cfc2;
+        flex: 0 0 auto;
+    }
+
+    .gaz-mobile-sheet__close {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        width: 34px;
+        height: 34px;
+        border: 1px solid #d8cfc2;
+        border-radius: 50%;
+        background: #faf6f1;
+        color: #5d4037;
+        font: 700 22px/1 Georgia, serif;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .gaz-mobile-sheet__body {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 14px 18px 22px;
+    }
+
+    .gaz-mobile-sheet .popup-content,
+    .gaz-mobile-sheet .popup-content h3,
+    .gaz-mobile-sheet .popup-content .popup-meta,
+    .gaz-mobile-sheet .popup-content .popup-desc,
+    .gaz-mobile-sheet .popup-content .popup-works,
+    .gaz-mobile-sheet .popup-content .work,
+    .gaz-mobile-sheet .popup-citation,
+    .gaz-mobile-sheet .slideshow,
+    .gaz-mobile-sheet .slide-text,
+    .gaz-mobile-sheet .slide-meta {
+        max-width: none;
+    }
+
+    .gaz-mobile-sheet .popup-content h3 {
+        padding-right: 34px;
+        font-size: 1.25em;
+    }
+
+    .gaz-mobile-sheet .popup-desc,
+    .gaz-mobile-sheet .popup-works,
+    .gaz-mobile-sheet .slideshow {
+        max-height: none;
+        overflow: visible;
+    }
+
+    .gaz-mobile-sheet .work-text,
+    .gaz-mobile-sheet .slide-text,
+    .gaz-mobile-sheet .cit-text {
+        overflow-wrap: anywhere;
+    }
+
+    .gaz-mobile-sheet .slideshow-controls {
+        position: sticky;
+        bottom: 0;
+        background: #fff;
+        padding-bottom: 8px;
+    }
+
+    .gaz-mobile-sheet-open .leaflet-control-container .leaflet-bottom {
+        bottom: 56px;
+    }
+}

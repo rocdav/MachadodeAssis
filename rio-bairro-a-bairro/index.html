@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa do Rio bairro a bairro — Machado de Assis</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../_shared/mobile-map.css" />
+    <link rel="stylesheet" href="../_shared/fullscreen.css" />
+    <link rel="stylesheet" href="../_shared/combo-select.css" />
+    <link rel="stylesheet" href="../_shared/detail-panel.css" />
+    <link rel="stylesheet" href="../_shared/topnav.css" />
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h2>Rio bairro a bairro</h2>
+                <p class="subtitle">Locais cariocas citados nas obras de Machado de Assis.</p>
+                <div class="stats" id="stats">Carregando…</div>
+                <div class="filter">
+                    <label for="kindFilter">Tipo:</label>
+                    <select id="kindFilter">
+                        <option value="all">Todos</option>
+                        <option value="bairros">Bairros</option>
+                        <option value="marcos">Marcos / construções</option>
+                        <option value="vias">Ruas, becos, caminhos</option>
+                        <option value="natural">Natural (morros, praias)</option>
+                    </select>
+                </div>
+            </header>
+            <ul class="place-list" id="placeList"></ul>
+        </aside>
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="../_shared/leaflet-popup.js"></script>
+    <script src="script.js"></script>
+    <script src="../_shared/mobile-map.js" defer></script>
+    <script src="../_shared/sidebar-toggle.js" defer></script>
+    <script src="../_shared/fullscreen.js" defer></script>
+    <script src="../_shared/combo-select.js" defer></script>
+    <script src="../_shared/detail-panel.js" defer></script>
+    <script src="../_shared/topnav.js" defer></script>
+</body>
+</html>
