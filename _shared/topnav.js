@@ -38,6 +38,15 @@
         nav.className = 'gaz-nav';
         nav.setAttribute('aria-label', 'Navegação entre visualizações');
 
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'gaz-nav-trigger';
+        trigger.setAttribute('aria-haspopup', 'true');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.setAttribute('aria-label', 'Abrir menu de visualizações');
+        trigger.innerHTML = '<span class="gaz-nav-hamburger" aria-hidden="true"><span></span><span></span><span></span></span><span class="gaz-nav-trigger-label">Visualizações</span>';
+        nav.appendChild(trigger);
+
         const home = document.createElement('a');
         home.href = '../';
         home.className = 'gaz-nav-home';
@@ -52,14 +61,6 @@
         homeText.textContent = 'Dicionário Geográfico de Machado de Assis';
         home.appendChild(homeText);
         nav.appendChild(home);
-
-        const trigger = document.createElement('button');
-        trigger.type = 'button';
-        trigger.className = 'gaz-nav-trigger';
-        trigger.setAttribute('aria-haspopup', 'true');
-        trigger.setAttribute('aria-expanded', 'false');
-        trigger.innerHTML = 'Visualizações <span aria-hidden="true">▾</span>';
-        nav.appendChild(trigger);
 
         const dropdown = document.createElement('div');
         dropdown.className = 'gaz-nav-dropdown';
